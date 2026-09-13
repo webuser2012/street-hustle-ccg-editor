@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STREET HUSTLE — NYC Underground Card Game</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --or: #ff6600;
+    --am: #ff9900;
+    --gd: #ffcc00;
+    --gr: #00cc44;
+    --bl: #2299ff;
+    --pu: #bb44ff;
+    --re: #ff2200;
+    --bg: #060301;
+    --bg2: #0d0700;
+    --bg3: #160a00;
+    --tx: #ffd9a0;
+    --tx2: #8a5030;
+    --tx3: #ffeedd;
+    --bdr: #3a1800;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--tx);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ─────────────────────── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: 0.4;
+  }
+
+  /* ── SCANLINES ─────────────────────────── */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none; z-index: 9998;
+  }
+
+  /* ── NAV ───────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 60px;
+    background: rgba(6,3,1,0.92);
+    border-bottom: 1px solid var(--bdr);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    color: var(--or);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex; gap: 32px; list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--tx2);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--or); }
+
+  .nav-cta {
+    background: var(--or);
+    color: #0a0300 !important;
+    padding: 8px 20px;
+    font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--am) !important; color: #0a0300 !important; }
+
+  /* ── HERO ──────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 80px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(58,24,0,0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(58,24,0,0.3) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 700px; height: 700px;
+    background: radial-gradient(ellipse, rgba(255,102,0,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -55%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--or);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  h1.hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 14vw, 160px);
+    line-height: 0.9;
+    letter-spacing: 6px;
+    color: var(--tx3);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+    position: relative;
+  }
+
+  h1.hero-title span { color: var(--or); }
+
+  .hero-sub {
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--tx2);
+    margin-top: 16px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    justify-content: center;
+    margin-top: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 5px 14px;
+    border: 1px solid var(--bdr);
+    color: var(--tx2);
+    text-transform: uppercase;
+  }
+
+  .tag.hot { border-color: var(--or); color: var(--or); }
+
+  .hero-btns {
+    display: flex; flex-wrap: wrap; gap: 16px;
+    justify-content: center;
+    margin-top: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.0s forwards;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--or);
+    color: #0a0300;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    padding: 14px 36px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--am); transform: translateY(-2px); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent;
+    color: var(--tx);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    padding: 14px 36px;
+    border: 1px solid var(--bdr);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-secondary:hover { border-color: var(--or); color: var(--or); transform: translateY(-2px); }
+
+  .hero-scroll {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; color: var(--tx2);
+    text-transform: uppercase;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--or), transparent);
+  }
+
+  /* ── STATS BAR ─────────────────────────── */
+  .stats-bar {
+    background: var(--bg2);
+    border-top: 1px solid var(--bdr);
+    border-bottom: 1px solid var(--bdr);
+    display: flex; flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stat-item {
+    flex: 1; min-width: 140px;
+    padding: 28px 24px;
+    text-align: center;
+    border-right: 1px solid var(--bdr);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-item::before {
+    content: '';
+    position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 0; height: 2px;
+    background: var(--or);
+    transition: width 0.4s;
+  }
+
+  .stat-item:hover::before { width: 80%; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px; line-height: 1;
+    color: var(--or);
+  }
+
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 2px;
+    color: var(--tx2);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── SECTIONS ──────────────────────────── */
+  section { padding: 100px 24px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 4px;
+    color: var(--or);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  h2.section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 0.95;
+    letter-spacing: 3px;
+    color: var(--tx3);
+    margin-bottom: 32px;
+  }
+
+  h2.section-title span { color: var(--or); }
+
+  .section-body {
+    font-size: 17px; font-weight: 300;
+    color: var(--tx2);
+    max-width: 620px;
+    line-height: 1.75;
+  }
+
+  /* ── GAMES GRID ───────────────────────── */
+  #games { background: var(--bg); }
+
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  .game-card {
+    background: var(--bg2);
+    border: 1px solid var(--bdr);
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+    display: flex; flex-direction: column;
+  }
+
+  .game-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--or);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .game-card:hover { border-color: var(--or); }
+  .game-card:hover::before { transform: scaleX(1); }
+
+  .game-card-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 3px;
+    color: var(--or);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .game-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px; line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--tx3);
+    margin-bottom: 8px;
+  }
+
+  .game-card .subtitle {
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--tx2);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .game-card p {
+    font-size: 16px; font-weight: 300;
+    color: var(--tx2);
+    line-height: 1.7;
+    flex: 1;
+    margin-bottom: 32px;
+  }
+
+  .game-features {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .feat {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 1px;
+    padding: 4px 10px;
+    border: 1px solid var(--bdr);
+    color: var(--tx2);
+    text-transform: uppercase;
+  }
+
+  .feat.green { border-color: var(--gr); color: var(--gr); }
+  .feat.blue  { border-color: var(--bl); color: var(--bl); }
+  .feat.gold  { border-color: var(--gd); color: var(--gd); }
+  .feat.red   { border-color: var(--re); color: var(--re); }
+
+  .game-card .btn-primary,
+  .game-card .btn-secondary { font-size: 16px; padding: 12px 28px; margin-right: 12px; margin-top: 8px; }
+
+  .big-emoji {
+    font-size: 72px; line-height: 1;
+    margin-bottom: 24px;
+    display: block;
+    filter: drop-shadow(0 0 20px rgba(255,102,0,0.4));
+  }
+
+  /* ── HOW TO PLAY ──────────────────────── */
+  #how { background: var(--bg3); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    margin-top: 60px;
+    border: 1px solid var(--bdr);
+  }
+
+  .step {
+    background: var(--bg2);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px; line-height: 1;
+    color: var(--bdr);
+    position: absolute; top: 16px; right: 20px;
+    transition: color 0.3s;
+  }
+
+  .step:hover .step-num { color: rgba(255,102,0,0.2); }
+
+  .step-icon { font-size: 32px; margin-bottom: 16px; display: block; }
+
+  .step h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px; letter-spacing: 1px;
+    color: var(--or);
+    margin-bottom: 10px;
+  }
+
+  .step p {
+    font-size: 14px; font-weight: 300;
+    color: var(--tx2);
+    line-height: 1.65;
+  }
+
+  /* ── CCG MECHANICS ────────────────────── */
+  #mechanics { background: var(--bg); }
+
+  .mechs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 60px;
+  }
+
+  .mech {
+    background: var(--bg2);
+    border: 1px solid var(--bdr);
+    border-top: 3px solid;
+    padding: 32px 28px;
+    transition: transform 0.25s;
+  }
+
+  .mech:hover { transform: translateY(-4px); }
+  .mech.or { border-top-color: var(--or); }
+  .mech.gr { border-top-color: var(--gr); }
+  .mech.bl { border-top-color: var(--bl); }
+  .mech.pu { border-top-color: var(--pu); }
+  .mech.re { border-top-color: var(--re); }
+  .mech.gd { border-top-color: var(--gd); }
+
+  .mech-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+
+  .mech h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px; letter-spacing: 1px;
+    color: var(--tx3);
+    margin-bottom: 10px;
+  }
+
+  .mech p {
+    font-size: 14px; font-weight: 300;
+    color: var(--tx2);
+    line-height: 1.65;
+  }
+
+  /* ── CARD TYPES ───────────────────────── */
+  #cards { background: var(--bg3); }
+
+  .card-types {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    margin-top: 60px;
+    border: 1px solid var(--bdr);
+  }
+
+  @media (max-width: 700px) { .card-types { grid-template-columns: 1fr 1fr; } }
+
+  .ctype {
+    padding: 40px 28px;
+    background: var(--bg2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ctype::after {
+    content: attr(data-label);
+    position: absolute; bottom: -10px; right: -10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px; letter-spacing: 0;
+    opacity: 0.04;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .ctype-color {
+    width: 32px; height: 4px;
+    margin-bottom: 20px;
+    border-radius: 1px;
+  }
+
+  .ctype h4 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px; letter-spacing: 1px;
+    color: var(--tx3);
+    margin-bottom: 6px;
+  }
+
+  .ctype .count {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--tx2);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .ctype p {
+    font-size: 13px; font-weight: 300;
+    color: var(--tx2);
+    line-height: 1.65;
+  }
+
+  /* ── PHYSICAL ─────────────────────────── */
+  #physical { background: var(--bg); }
+
+  .physical-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 60px;
+  }
+
+  @media (max-width: 760px) { .physical-grid { grid-template-columns: 1fr; } }
+
+  .phys-box {
+    background: var(--bg2);
+    border: 1px solid var(--bdr);
+    padding: 48px;
+  }
+
+  .phys-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px; letter-spacing: 2px;
+    color: var(--or);
+    margin-bottom: 8px;
+  }
+
+  .phys-box .price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px; line-height: 1;
+    color: var(--gd);
+    margin-bottom: 20px;
+  }
+
+  .phys-box .price-note {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--tx2);
+    text-transform: uppercase;
+    margin-top: -16px;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .phys-box ul { list-style: none; }
+  .phys-box li {
+    font-size: 15px; font-weight: 300;
+    color: var(--tx2);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(58,24,0,0.5);
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .phys-box li::before {
+    content: '▸';
+    color: var(--or);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* ── FAQ ──────────────────────────────── */
+  #faq { background: var(--bg3); }
+
+  .faq-list { margin-top: 48px; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--bdr);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    width: 100%; background: none; border: none;
+    padding: 24px 0;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px; font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--tx3);
+    text-align: left;
+  }
+
+  .faq-q:hover { color: var(--or); }
+
+  .faq-arrow {
+    font-size: 18px; color: var(--or);
+    transition: transform 0.3s; flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    font-size: 16px; font-weight: 300;
+    color: var(--tx2);
+    line-height: 1.75;
+  }
+
+  .faq-item.open .faq-a { max-height: 300px; }
+
+  .faq-a-inner { padding-bottom: 24px; }
+
+  /* ── CTA ──────────────────────────────── */
+  #cta {
+    background: var(--bg2);
+    border-top: 1px solid var(--bdr);
+    border-bottom: 1px solid var(--bdr);
+    padding: 120px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #cta::before {
+    content: 'STREET HUSTLE';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 15vw, 200px);
+    letter-spacing: 8px;
+    color: rgba(255,102,0,0.04);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  #cta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    letter-spacing: 3px;
+    color: var(--tx3);
+    margin-bottom: 16px;
+  }
+
+  #cta p {
+    font-size: 18px; font-weight: 300;
+    color: var(--tx2);
+    max-width: 500px; margin: 0 auto 48px;
+  }
+
+  .cta-btns {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 16px;
+  }
+
+  /* ── FOOTER ───────────────────────────── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--bdr);
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; letter-spacing: 4px;
+    color: var(--or);
+    margin-bottom: 8px;
+  }
+
+  footer p {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--tx2);
+    text-transform: uppercase;
+    line-height: 2;
+  }
+
+  /* ── DIVIDER ──────────────────────────── */
+  .or-line {
+    display: flex; align-items: center; gap: 16px;
+    margin: 40px 0;
+  }
+
+  .or-line::before, .or-line::after {
+    content: ''; flex: 1;
+    height: 1px; background: var(--bdr);
+  }
+
+  .or-line span {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; letter-spacing: 3px;
+    color: var(--tx2); text-transform: uppercase;
+  }
+
+  /* ── TICKER ───────────────────────────── */
+  .ticker-wrap {
+    background: var(--or);
+    overflow: hidden;
+    padding: 10px 0;
+    white-space: nowrap;
+  }
+
+  .ticker {
+    display: inline-flex; gap: 0;
+    animation: ticker 18s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px; letter-spacing: 3px;
+    color: #0a0300;
+    padding: 0 32px;
+  }
+
+  .ticker-sep {
+    color: rgba(10,3,0,0.4);
+    font-size: 10px;
+  }
+
+  /* ── ANIMATIONS ───────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* ── RESPONSIVE ───────────────────────── */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 72px 16px; }
+    .games-grid { grid-template-columns: 1fr; }
+    .card-types { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ── REVEAL ANIMATION ─────────────────── */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+
+  .reveal.visible {
+    opacity: 1; transform: translateY(0);
+  }
+
+  /* ── NOTIFY FORM ───────────────────────── */
+  .notify-block {
+    margin-top: 60px;
+    padding-top: 48px;
+    border-top: 1px solid var(--bdr);
+    position: relative;
+    z-index: 1;
+  }
+
+  .notify-block h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: 3px;
+    color: var(--gd);
+    margin-bottom: 10px;
+  }
+
+  .notify-block p {
+    font-size: 16px; font-weight: 300;
+    color: var(--tx2);
+    margin-bottom: 28px;
+  }
+
+  .notify-form {
+    display: flex; flex-wrap: wrap;
+    gap: 12px; justify-content: center;
+    max-width: 540px; margin: 0 auto;
+  }
+
+  .notify-form input[type="email"] {
+    flex: 1; min-width: 220px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--bdr);
+    color: var(--tx3);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px; letter-spacing: 1px;
+    padding: 14px 20px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .notify-form input[type="email"]::placeholder { color: var(--tx2); }
+  .notify-form input[type="email"]:focus { border-color: var(--gd); }
+
+  .notify-form button {
+    background: var(--gd);
+    color: #0a0300;
+    border: none; cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: 3px;
+    padding: 14px 32px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .notify-form button:hover { background: var(--am); transform: translateY(-2px); }
+
+  .notify-success {
+    display: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px; letter-spacing: 2px;
+    color: var(--gr);
+    text-transform: uppercase;
+    margin-top: 16px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">STREET HUSTLE</a>
+  <ul class="nav-links">
+    <li><a href="#games">Games</a></li>
+    <li><a href="#how">How to Play</a></li>
+    <li><a href="#mechanics">Mechanics</a></li>
+    <li><a href="#physical">Physical</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#cta" class="nav-cta">Play Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <p class="eyebrow">NYC Underground · Est. 2026 · v5.1 Supply Chain Edition</p>
+  <h1 class="hero-title">STREET<br><span>HUSTLE</span></h1>
+  <p class="hero-sub">The Card Game of the NYC Streets</p>
+  <div class="hero-tags">
+    <span class="tag hot">2 Players</span>
+    <span class="tag hot">30–45 Min</span>
+    <span class="tag">Ages 17+</span>
+    <span class="tag">40-Card Deck</span>
+    <span class="tag">Print & Play</span>
+    <span class="tag hot">Digital Edition</span>
+  </div>
+  <div class="hero-btns">
+    <a href="#games" class="btn-primary">▶ Play Online</a>
+    <a href="#physical" class="btn-secondary">📦 Get Physical</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <span class="ticker-item">SUPPLY CHAIN EDITION</span><span class="ticker-sep">◆</span>
+    <span class="ticker-item">5 NYC BOROUGHS</span><span class="ticker-sep">◆</span>
+    <span class="ticker-item">10 UNIQUE DEALERS</span><span class="ticker-sep">◆</span>
+    <span class="ticker-item">53 CARDS</span><span class="ticker-sep">◆</span>
+    <span class="ticker-item">FULLY BALANCED v5.1</span><span class="ticker-sep">◆</span>
+    <span class="ticker-item">PRINT & PLAY FREE</span><span class="ticker-sep">◆</span>
+    <span class="ticker-item">SUPPLY CHAIN EDITION</span><span class="ticker-sep">◆</span>
+    <span class="ticker-item">5 NYC BOROUGHS</span><span class="ticker-sep">◆</span>
+    <span class="ticker-item">10 UNIQUE DEALERS</span><span class="ticker-sep">◆</span>
+    <span class="ticker-item">53 CARDS</span><span class="ticker-sep">◆</span>
+    <span class="ticker-item">FULLY BALANCED v5.1</span><span class="ticker-sep">◆</span>
+    <span class="ticker-item">PRINT & PLAY FREE</span><span class="ticker-sep">◆</span>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">53</div><div class="stat-label">Unique Cards</div></div>
+  <div class="stat-item"><div class="stat-num">10</div><div class="stat-label">Dealer Crew</div></div>
+  <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">NYC Boroughs</div></div>
+  <div class="stat-item"><div class="stat-num">46%</div><div class="stat-label">Player Win Rate</div></div>
+  <div class="stat-item"><div class="stat-num">12.9</div><div class="stat-label">Avg Game Turns</div></div>
+  <div class="stat-item"><div class="stat-num">50</div><div class="stat-label">Games Playtested</div></div>
+</div>
+
+<!-- GAMES -->
+<section id="games">
+  <div class="container">
+    <p class="section-label reveal">Choose Your Format</p>
+    <h2 class="section-title reveal">TWO WAYS<br>TO <span>PLAY</span></h2>
+    <p class="section-body reveal">Street Hustle exists in two forms: a fast digital card game you can play right now in your browser, and a deep competitive CCG with a physical print-and-play kit.</p>
+
+    <div class="games-grid">
+      <!-- Web Game -->
+      <div class="game-card reveal">
+        <span class="game-card-tag">🌐 Browser Game · Free · No Download</span>
+        <span class="big-emoji">🎮</span>
+        <h3>STREET<br>HUSTLE</h3>
+        <p class="subtitle">Digital Edition · v5.1</p>
+        <p>The complete NYC dope trade simulator. Buy low, sell high, bribe cops, and bankrupt your rivals across all five boroughs. A faithful digital adaptation of the classic Dope Wars formula — now with a full economy, event system, and borough strategy layer.</p>
+        <div class="game-features">
+          <span class="feat green">Free to Play</span>
+          <span class="feat blue">Solo</span>
+          <span class="feat">30 Day Campaign</span>
+          <span class="feat">Loan Shark</span>
+          <span class="feat">6 Drugs</span>
+          <span class="feat gold">NYC Boroughs</span>
+        </div>
+        <div>
+          <a href="StreetHustle_Game.html" class="btn-primary">▶ Play Now</a>
+          <a href="#how" class="btn-secondary">How to Play</a>
+        </div>
+      </div>
+
+      <!-- CCG -->
+      <div class="game-card reveal">
+        <span class="game-card-tag">🃏 CCG · Digital + Physical</span>
+        <span class="big-emoji">🃏</span>
+        <h3>STREET<br>HUSTLE<br>CCG</h3>
+        <p class="subtitle">Supply Chain Edition · v5.1</p>
+        <p>A fully-designed 2-player competitive collectible card game set in the same NYC world. Build your crew, load your dealers with product, and KO your rival's operation. 53 cards, 14 unique mechanics, and a deeply balanced system — 50 games of playtesting to prove it.</p>
+        <div class="game-features">
+          <span class="feat green">Free Digital</span>
+          <span class="feat blue">2 Players</span>
+          <span class="feat">vs CPU</span>
+          <span class="feat red">Supply Chain Rule</span>
+          <span class="feat gold">Print & Play</span>
+          <span class="feat">Fully Balanced</span>
+        </div>
+        <div>
+          <a href="StreetHustle_CCG_v51.html" class="btn-primary">▶ Play CCG</a>
+          <a href="#mechanics" class="btn-secondary">Mechanics</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO PLAY -->
+<section id="how">
+  <div class="container">
+    <p class="section-label reveal">Getting Started</p>
+    <h2 class="section-title reveal">HOW TO<br><span>PLAY</span></h2>
+    <p class="section-body reveal">The CCG is easy to learn in five steps. The digital version is instant — just open and play.</p>
+
+    <div class="steps-grid">
+      <div class="step reveal">
+        <span class="step-num">01</span>
+        <span class="step-icon">🏙️</span>
+        <h4>Play Boroughs</h4>
+        <p>Each turn, play a Borough card to expand your operation and generate Heat — the resource you spend to play all other cards.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">02</span>
+        <span class="step-icon">🧑</span>
+        <h4>Deploy Dealers</h4>
+        <p>Spend Heat to put Dealers into your Active zone. They're your fighters — but they can't do anything without product.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">03</span>
+        <span class="step-icon">💊</span>
+        <h4>Load Stash</h4>
+        <p>Attach drug cards to your Active Dealer to boost their ATK. <b>No Stash = no damage.</b> That's the Supply Chain Rule.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">04</span>
+        <span class="step-icon">⚔️</span>
+        <h4>Attack</h4>
+        <p>Your loaded Dealer hits the opponent's dealer. Damage = ATK minus their DEF. Drop their HP to zero for a KO.</p>
+      </div>
+      <div class="step reveal">
+        <span class="step-num">05</span>
+        <span class="step-icon">🏆</span>
+        <h4>Win</h4>
+        <p>KO 5 dealers to collect all Prize Cards for an instant win — or grind their HP to zero. First to 0 HP loses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MECHANICS -->
+<section id="mechanics">
+  <div class="container">
+    <p class="section-label reveal">Core Systems</p>
+    <h2 class="section-title reveal">WHAT MAKES<br><span>IT TICK</span></h2>
+    <p class="section-body reveal">Six interlocking mechanics built from the ground up to capture the authentic risk and reward of street economics.</p>
+
+    <div class="mechs-grid">
+      <div class="mech or reveal">
+        <span class="mech-icon">⛓️</span>
+        <h4>Supply Chain Rule</h4>
+        <p>Dealers deal 0 damage without Stash attached. You must load product before every attack. One exception: Ghost operates on reputation alone.</p>
+      </div>
+      <div class="mech re reveal">
+        <span class="mech-icon">🚔</span>
+        <h4>Bust Mechanic</h4>
+        <p>Carry 4+ Stash on a Dealer and a Police Bust hits for +3 bonus damage — then strips everything. Safe maximum is 3 cards.</p>
+      </div>
+      <div class="mech gd reveal">
+        <span class="mech-icon">🏆</span>
+        <h4>Prize System</h4>
+        <p>KO an opponent's Dealer and draw a Prize Card. Collect all 5 and win instantly. But Prize cards can't be played the turn you earn them.</p>
+      </div>
+      <div class="mech gr reveal">
+        <span class="mech-icon">🔥</span>
+        <h4>Heat Economy</h4>
+        <p>Your Boroughs generate Heat each turn. Spend it on Dealers, Stash, and Actions. Expand your borough footprint to spend more every turn.</p>
+      </div>
+      <div class="mech bl reveal">
+        <span class="mech-icon">📈</span>
+        <h4>Market Shift</h4>
+        <p>A free Action that makes all Stash cost 0 Heat for both players this turn — a sudden price spike that can flip the board state in a single turn.</p>
+      </div>
+      <div class="mech pu reveal">
+        <span class="mech-icon">👊</span>
+        <h4>Bare Knuckle</h4>
+        <p>No Active Dealer? You still deal 1 direct HP damage. There's no such thing as a completely wasted turn on the street.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CARD TYPES -->
+<section id="cards">
+  <div class="container">
+    <p class="section-label reveal">The Deck</p>
+    <h2 class="section-title reveal">53 CARDS<br><span>4 TYPES</span></h2>
+    <p class="section-body reveal">Every card in the 40-card starter deck serves the economy. From cheap Common crew to Legendary game-enders.</p>
+
+    <div class="card-types">
+      <div class="ctype reveal" data-label="DEALER">
+        <div class="ctype-color" style="background:var(--or)"></div>
+        <h4>Dealers</h4>
+        <p class="count">10 unique · Common to Legendary</p>
+        <p>Your fighters. From the 1-cost Street Punk to the 5-cost Kingpin. Each needs Stash to operate — except Ghost, who works on rep alone.</p>
+      </div>
+      <div class="ctype reveal" data-label="STASH">
+        <div class="ctype-color" style="background:var(--gr)"></div>
+        <h4>Stash</h4>
+        <p class="count">8 types · Weed to Golden Brick</p>
+        <p>Drug cards that attach to your Dealer and boost ATK. Free Ludes heal. Mystery Stash rolls a die. The Golden Brick (+5 ATK) hits when it lands.</p>
+      </div>
+      <div class="ctype reveal" data-label="ACTION">
+        <div class="ctype-color" style="background:var(--bl)"></div>
+        <h4>Actions</h4>
+        <p class="count">16 types · Free to 4 Heat</p>
+        <p>Instant effects: draw, heal, deal direct damage, freeze a dealer, bust their stash, or drop a Federal Raid to wipe the board.</p>
+      </div>
+      <div class="ctype reveal" data-label="BOROUGH">
+        <div class="ctype-color" style="background:var(--pu)"></div>
+        <h4>Boroughs</h4>
+        <p class="count">6 NYC locations · Free to play</p>
+        <p>Bronx, Brooklyn, Queens, Staten Island, Harlem, Manhattan. Free to play each turn. Each generates Heat and provides a unique territory bonus.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHYSICAL -->
+<section id="physical">
+  <div class="container">
+    <p class="section-label reveal">Get Physical</p>
+    <h2 class="section-title reveal">OWN THE<br><span>REAL THING</span></h2>
+    <p class="section-body reveal">Street Hustle is designed to be played on a table. Every card is built to standard poker size. Print it yourself or wait for the manufactured edition.</p>
+
+    <div class="physical-grid">
+      <div class="phys-box reveal">
+        <h3>Print & Play</h3>
+        <div class="price">FREE</div>
+        <span class="price-note">Download · Print · Cut · Play</span>
+        <ul>
+          <li>53-card PDF — 7 pages, 9-up letter</li>
+          <li>Standard poker size (2.25" × 3.5")</li>
+          <li>Card backs page for double-sided printing</li>
+          <li>Cut guides on every card</li>
+          <li>Full tokens & HP tracker sheet</li>
+          <li>10 quick-reference cards</li>
+          <li>14-page illustrated rulebook PDF</li>
+          <li>Needs: printer, card stock, scissors</li>
+        </ul>
+        <br>
+        <a href="StreetHustle_Cards_PnP.pdf" class="btn-primary" style="margin-top:16px">⬇ Download Print Kit</a>
+      </div>
+
+      <div class="phys-box reveal">
+        <h3>Manufactured Edition</h3>
+        <div class="price">~$45</div>
+        <span class="price-note">Estimated retail · Kickstarter Coming</span>
+        <ul>
+          <li>Professional poker-quality card stock</li>
+          <li>Linen finish, UV-coated</li>
+          <li>Laser-cut acrylic Heat tokens</li>
+          <li>Custom moulded HP tracker board</li>
+          <li>Premium illustrated rulebook booklet</li>
+          <li>Tuck box with full art</li>
+          <li>Shrink-wrapped & retail-ready</li>
+          <li>Sign up below to be notified at launch</li>
+        </ul>
+        <br>
+        <a href="#cta" class="btn-secondary" style="margin-top:16px">🔔 Notify Me at Launch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <p class="section-label reveal">Questions</p>
+    <h2 class="section-title reveal">FAQ</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">Is the digital version really free?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Both digital games — the Dope Wars-style browser game and the full CCG — are completely free to play in your browser. No account, no download, no payment. Just open and play.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I play the CCG against another person?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">The current digital version is single-player vs CPU. A local 2-player mode is in development. The physical print-and-play kit supports full 2-player tabletop play right now — print two decks and sit across from each other.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How hard is the Supply Chain Rule to learn?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">It becomes natural after one game. The rule is simple: attach a Stash card to your Dealer before attacking. Your first turn is always Borough → Weed → Attack. After that it's second nature. Ghost is the only exception and even beginners remember him quickly.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long does a game of the CCG take?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Our 50-game simulation average was 12.9 turns, which translates to about 30–40 minutes for a real game. Experienced players who know the deck can finish faster. The 22-round hard cap ensures no game drags indefinitely.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What do I need to print the physical version?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">A printer, card stock (or regular paper for a quick prototype), and scissors or a craft knife. For the best result: print on 80–100lb card stock, use a guillotine cutter for clean edges, and sleeve the cards in standard poker sleeves over a plain backing card.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">When is the manufactured version launching?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">We are targeting a Kickstarter campaign in 2026. The game is design-complete and fully balanced. Remaining work is manufacturing relationships, art direction for printed cards, and campaign preparation. Sign up on the notification list to hear first.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is the game content appropriate for all ages?<span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Street Hustle is rated 17+ due to its drug-trade theme, street violence mechanics, and NYC underground setting. It is a game for adults. The thematic content is cartoon-stylized and no different in nature from classic video games like Dope Wars.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <h2>READY TO RUN<br>THE STREETS?</h2>
+    <p>Both games are live right now. No account. No download. Just play.</p>
+    <div class="cta-btns">
+      <a href="StreetHustle_Game.html" class="btn-primary">▶ Play Dope Wars</a>
+      <a href="StreetHustle_CCG_v51.html" class="btn-primary" style="background:var(--gd)">🃏 Play the CCG</a>
+      <a href="StreetHustle_Cards_PnP.pdf" class="btn-secondary">📦 Print & Play Kit</a>
+    </div>
+
+    <!-- KICKSTARTER NOTIFY -->
+    <div class="notify-block">
+      <h3>🔔 NOTIFY ME AT LAUNCH</h3>
+      <p>The manufactured edition is Kickstarter-bound in 2026. Drop your email — you'll be first to know.</p>
+      <form
+        name="kickstarter-notify"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="notify-form"
+        id="notifyForm"
+      >
+        <input type="hidden" name="form-name" value="kickstarter-notify">
+        <input type="hidden" name="bot-field" style="display:none">
+        <input
+          type="email"
+          name="email"
+          placeholder="your@email.com"
+          required
+          autocomplete="email"
+        >
+        <button type="submit">NOTIFY ME</button>
+      </form>
+      <p class="notify-success" id="notifySuccess">✔ You're on the list. We'll hit you when it drops.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">STREET HUSTLE</div>
+  <p>
+    CCG v5.1 · Supply Chain Edition · NYC Underground<br>
+    2 Players · Ages 17+ · 30–45 Minutes<br>
+    <br>
+    Designed with 50-game simulation playtesting · Fully balanced · Print & Play free
+  </p>
+</footer>
+
+<script>
+  // Intersection Observer for reveal animations
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Smooth active nav highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#'+current ? 'var(--or)' : '';
+    });
+  });
+
+  // Notify form — Netlify AJAX submission
+  const notifyForm = document.getElementById('notifyForm');
+  const notifySuccess = document.getElementById('notifySuccess');
+  if (notifyForm) {
+    notifyForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new FormData(notifyForm);
+      try {
+        await fetch('/', { method: 'POST', body: data });
+        notifyForm.style.display = 'none';
+        notifySuccess.style.display = 'block';
+      } catch (err) {
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  }
+</script>
+</body>
+</html>

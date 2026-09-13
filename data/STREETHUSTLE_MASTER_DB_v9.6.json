@@ -1,0 +1,2376 @@
+{
+  "version": "9.6",
+  "set_name": "STREET HUSTLE CCG \u2014 COAST TO COAST EDITION",
+  "release_date": "2026-08-11",
+  "total_cards": 116,
+  "expansion_framework": {
+    "sets": [
+      {
+        "code": "SCE",
+        "name": "Supply Chain Edition",
+        "size": 52,
+        "mechanics": [
+          "Supply Chain",
+          "Heat",
+          "Stash Boost",
+          "Borough Bonus"
+        ]
+      },
+      {
+        "code": "CTC",
+        "name": "Coast to Coast",
+        "size": 76,
+        "mechanics": [
+          "Travel",
+          "Connection",
+          "Turf War",
+          "Federal Heat",
+          "Syndicate",
+          "Launder",
+          "Prestige"
+        ]
+      },
+      {
+        "code": "EXP1",
+        "name": "Expansion 1: Cartel Connect",
+        "planned_size": 50,
+        "mechanics": [
+          "Cartel",
+          "Import",
+          "Border",
+          "Mule"
+        ]
+      },
+      {
+        "code": "EXP2",
+        "name": "Expansion 2: Dark Web",
+        "planned_size": 50,
+        "mechanics": [
+          "Crypto",
+          "Anonymous",
+          "Encryption",
+          "Dead Drop"
+        ]
+      },
+      {
+        "code": "EXP3",
+        "name": "Expansion 3: Prison Economy",
+        "planned_size": 50,
+        "mechanics": [
+          "Contraband",
+          "Guard",
+          "Yard",
+          "Commissary"
+        ]
+      }
+    ],
+    "keywords": [
+      {
+        "name": "SUPPLY_CHAIN",
+        "text": "This Dealer deals 0 damage unless it has at least 1 Stash attached. (Ghost is exempt.)"
+      },
+      {
+        "name": "HASTE",
+        "text": "Can attack the same turn it enters play."
+      },
+      {
+        "name": "SHIELD",
+        "text": "Prevents the next instance of damage that would be dealt to this card."
+      },
+      {
+        "name": "TRAVEL",
+        "text": "When you play a Borough, you may move this Dealer to that Borough's zone."
+      },
+      {
+        "name": "CONNECTION",
+        "text": "When this enters play, search your deck for a card with matching trait and reveal it."
+      },
+      {
+        "name": "TURF_WAR",
+        "text": "When you control 3+ Boroughs, this card gains its Turf War bonus."
+      },
+      {
+        "name": "FEDERAL_HEAT",
+        "text": "Opponent's Cop/Action cards cost +1 Heat to play while you control this."
+      },
+      {
+        "name": "SYNDICATE",
+        "text": "Your other Dealers of the same faction get +1 ATK."
+      },
+      {
+        "name": "LAUNDER",
+        "text": "When this Stash is discarded, gain 1 Heat."
+      },
+      {
+        "name": "PRESTIGE",
+        "text": "Legendary-only: While this is in play, you win ties and your max hand size is +1."
+      },
+      {
+        "name": "CARTEL",
+        "text": "Expansion 1: Import cards from outside the game."
+      },
+      {
+        "name": "BORDER",
+        "text": "Expansion 1: Effects that cross zones."
+      },
+      {
+        "name": "MULE",
+        "text": "Expansion 1: Move Stash between Dealers for free."
+      },
+      {
+        "name": "CRYPTO",
+        "text": "Expansion 2: Pay Heat from your discard pile instead of pool."
+      },
+      {
+        "name": "ANONYMOUS",
+        "text": "Expansion 2: Cannot be targeted by opponent's Actions."
+      },
+      {
+        "name": "DEAD_DROP",
+        "text": "Expansion 2: Play face-down, reveal for effect."
+      },
+      {
+        "name": "CONTRABAND",
+        "text": "Expansion 3: Stash that survives Dealer KO."
+      },
+      {
+        "name": "GUARD",
+        "text": "Expansion 3: Dealer that protects your other cards."
+      },
+      {
+        "name": "YARD",
+        "text": "Expansion 3: Special zone with unique rules."
+      },
+      {
+        "name": "COMMISSARY",
+        "text": "Expansion 3: Buy cards from a shared pool."
+      }
+    ],
+    "factions": [
+      {
+        "name": "STREET_CREW",
+        "color": "#FF6600",
+        "icon": "\ud83d\udc65",
+        "theme": "Raw numbers, aggression, early game"
+      },
+      {
+        "name": "UPTOWN_SYNDICATE",
+        "color": "#FFCC00",
+        "icon": "\ud83d\udc51",
+        "theme": "Control, late game, premium stats"
+      },
+      {
+        "name": "BROOKLYN_CONNECT",
+        "color": "#00CC44",
+        "icon": "\ud83c\udf3f",
+        "theme": "Ramp, Stash synergy, resource generation"
+      },
+      {
+        "name": "BRONX_RUNNERS",
+        "color": "#2299FF",
+        "icon": "\ud83c\udfc3",
+        "theme": "Speed, mobility, hit-and-run"
+      },
+      {
+        "name": "GHOST_NETWORK",
+        "color": "#BB44FF",
+        "icon": "\ud83d\udc7b",
+        "theme": "Evasion, information, control"
+      },
+      {
+        "name": "FEDERAL_TASKFORCE",
+        "color": "#FF2200",
+        "icon": "\ud83c\udfdb\ufe0f",
+        "theme": "Disruption, removal, anti-synergy"
+      }
+    ],
+    "zones": [
+      "ACTIVE_STREET",
+      "BENCH",
+      "BOROUGH_ROW",
+      "HEAT_POOL",
+      "HAND",
+      "DECK",
+      "DISCARD",
+      "PRIZE_PILE",
+      "EXILE"
+    ]
+  },
+  "cards": [
+    {
+      "id": "d_punk",
+      "set": "SCE",
+      "type": "dealer",
+      "name": "Street Punk",
+      "emoji": "\ud83d\ude24",
+      "cost": 1,
+      "rarity": "common",
+      "faction": "STREET_CREW",
+      "hp": 10,
+      "atk": 1,
+      "def": 0,
+      "text": "ATK 1, HP 10. Must have 1+ Stash to deal damage.",
+      "flavor": "Every empire starts somewhere.",
+      "keywords": [
+        "SUPPLY_CHAIN"
+      ],
+      "art_prompt": "young streetwise male teenager, hoodie and sneakers, aggressive stance on NYC sidewalk, neon green and orange glow, Metatron's Cube sacred geometry halo behind him, graffiti wall background, street lights casting neon reflections on wet pavement, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_runner",
+      "set": "SCE",
+      "type": "dealer",
+      "name": "Bronx Runner",
+      "emoji": "\ud83c\udfc3",
+      "cost": 1,
+      "rarity": "common",
+      "faction": "BRONX_RUNNERS",
+      "hp": 14,
+      "atk": 2,
+      "def": 1,
+      "text": "ATK 2, DEF 1, HP 14. Each Stash attached: +1 ATK. Must have 1+ Stash to deal damage.",
+      "flavor": "Fast, hungry, Bronx-born.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "STASH_BOOST"
+      ],
+      "art_prompt": "athletic young male sprinting through The Bronx at night, tracksuit, determined expression, motion blur suggesting speed, neon green energy trail forming sacred geometry spiral behind him, elevated train tracks overhead, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_corner",
+      "set": "SCE",
+      "type": "dealer",
+      "name": "Corner Boy",
+      "emoji": "\ud83d\ude0e",
+      "cost": 1,
+      "rarity": "common",
+      "faction": "STREET_CREW",
+      "hp": 11,
+      "atk": 1,
+      "def": 1,
+      "text": "ATK 1, DEF 1, HP 11. Durable blocker. Must have 1+ Stash to deal damage.",
+      "flavor": "The block is his.",
+      "keywords": [
+        "SUPPLY_CHAIN"
+      ],
+      "art_prompt": "young male leaning on a brick corner, relaxed but watchful, NYC housing project background at night, neon orange streetlight glow, Flower of Life sacred geometry subtly embedded in the brick wall behind him, hooded sweatshirt, hands in pockets, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_plug",
+      "set": "SCE",
+      "type": "dealer",
+      "name": "Brooklyn Plug",
+      "emoji": "\ud83c\udf3f",
+      "cost": 2,
+      "rarity": "uncommon",
+      "faction": "BROOKLYN_CONNECT",
+      "hp": 12,
+      "atk": 2,
+      "def": 1,
+      "text": "ATK 2, DEF 1, HP 12. Weed/Ludes Stash give +1 Heat when attached. Must have 1+ Stash to deal damage.",
+      "flavor": "Everybody in the borough knows.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "PLUG_HEAT"
+      ],
+      "art_prompt": "confident male figure in Brooklyn, green cannabis leaf energy radiating outward as sacred geometry mandala, neon teal and blue glow, brownstone buildings at night, trusted dealer energy, relaxed smile, stylish streetwear, Seed of Life pattern forming in the air around him, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_shark",
+      "set": "SCE",
+      "type": "dealer",
+      "name": "Loan Shark",
+      "emoji": "\ud83e\udd88",
+      "cost": 2,
+      "rarity": "uncommon",
+      "faction": "UPTOWN_SYNDICATE",
+      "hp": 13,
+      "atk": 2,
+      "def": 1,
+      "text": "ATK 2, DEF 1, HP 13. On attack: opponent loses 1 Heat next turn. Must have 1+ Stash to deal damage.",
+      "flavor": "He always collects.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "DRAIN_HEAT"
+      ],
+      "art_prompt": "imposing heavyset man in a dark suit, gold tooth glinting, stacks of cash and ledger books, predatory loan shark energy, neon blue and gold glow, Metatron's Cube sacred geometry forming a cage or web around him suggesting debt, dark NYC office background, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_ghost",
+      "set": "SCE",
+      "type": "dealer",
+      "name": "Ghost",
+      "emoji": "\ud83d\udc7b",
+      "cost": 2,
+      "rarity": "uncommon",
+      "faction": "GHOST_NETWORK",
+      "hp": 12,
+      "atk": 2,
+      "def": 0,
+      "text": "ATK 2, HP 12. Action immune. EXCEPTION: Ghost deals damage WITHOUT needing Stash.",
+      "flavor": "Nobody knows his real name.",
+      "keywords": [
+        "ACTION_IMMUNE",
+        "SUPPLY_CHAIN_EXEMPT"
+      ],
+      "art_prompt": "faceless silhouette of a figure dissolving into sacred geometry smoke, identity concealed, only glowing eyes visible through the darkness, hexagonal sacred geometry fractals radiating outward, neon blue and teal ethereal glow, NYC alley background barely visible through the geometric mist, mysterious and untraceable, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_boss",
+      "set": "SCE",
+      "type": "dealer",
+      "name": "Uptown Boss",
+      "emoji": "\ud83d\udc51",
+      "cost": 3,
+      "rarity": "rare",
+      "faction": "UPTOWN_SYNDICATE",
+      "hp": 16,
+      "atk": 3,
+      "def": 2,
+      "text": "ATK 3, DEF 2, HP 16. +1 ATK per Stash attached (max +3). Must have 1+ Stash to deal damage.",
+      "flavor": "He runs Harlem. Nobody argues.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "BOSS_PER_STASH"
+      ],
+      "art_prompt": "powerful commanding male figure, uptown Manhattan penthouse view behind him, crown motif, sharp suit, neon gold aura, Metatron's Cube as a massive glowing mandala halo behind his head, gold sacred geometry patterns on his suit fabric, luxury and danger combined, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_trench",
+      "set": "SCE",
+      "type": "dealer",
+      "name": "Trench Lady",
+      "emoji": "\ud83e\udde5",
+      "cost": 3,
+      "rarity": "rare",
+      "faction": "GHOST_NETWORK",
+      "hp": 15,
+      "atk": 2,
+      "def": 2,
+      "text": "ATK 2, DEF 2, HP 15. Cop Actions deal 0 damage to this. Stash limit ignored. Must have 1+ Stash to deal damage.",
+      "flavor": "Can't arrest what you can't see.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "COP_IMMUNE",
+        "UNLIMITED_STASH"
+      ],
+      "art_prompt": "fierce and stylish woman in a long trench coat, NYC street at night, neon gold reflecting off the trench coat, Flower of Life sacred geometry pattern on the coat's fabric as if woven into it, commanding presence, weapons concealed, powerful female energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_suv",
+      "set": "SCE",
+      "type": "dealer",
+      "name": "SUV Crew",
+      "emoji": "\ud83d\ude99",
+      "cost": 4,
+      "rarity": "rare",
+      "faction": "STREET_CREW",
+      "hp": 16,
+      "atk": 4,
+      "def": 2,
+      "text": "ATK 4, DEF 2, HP 16. HASTE \u2014 can attack the turn it's played. Must have 1+ Stash to deal damage.",
+      "flavor": "Six cylinders. No mercy.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "HASTE"
+      ],
+      "art_prompt": "group of three intimidating figures emerging from a blacked-out SUV, neon gold headlights cutting through dark NYC night, hexagonal sacred geometry grid appearing in the light beams, crew energy, strength in numbers, urban street setting, all wearing dark clothing, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_kingpin",
+      "set": "SCE",
+      "type": "dealer",
+      "name": "The Kingpin",
+      "emoji": "\ud83d\udc8e",
+      "cost": 5,
+      "rarity": "legendary",
+      "faction": "UPTOWN_SYNDICATE",
+      "hp": 20,
+      "atk": 5,
+      "def": 3,
+      "text": "ATK 5, DEF 3, HP 20. LEGENDARY ENTRY: Deal 3 damage + ALL your Dealers gain +1 ATK permanently. Must have 1+ Stash to deal damage. PRESTIGE.",
+      "flavor": "The city bows.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "KINGPIN_ENTRY",
+        "PRESTIGE"
+      ],
+      "art_prompt": "supreme crime boss seated on a throne, Manhattan skyline visible through floor-to-ceiling windows behind him, enormous Metatron's Cube sacred geometry mandala radiating purple and crimson neon light from behind him like a crown, diamond-encrusted jewelry, absolute power energy, every sacred geometry symbol visible in the background architecture, legendary aura, dark background, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_enforcer",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Enforcer",
+      "emoji": "\ud83d\udcaa",
+      "cost": 2,
+      "rarity": "common",
+      "faction": "STREET_CREW",
+      "hp": 13,
+      "atk": 2,
+      "def": 2,
+      "text": "ATK 2, DEF 2, HP 13. When this KOs a Dealer: gain 1 Heat. Must have 1+ Stash to deal damage.",
+      "flavor": "Respect is taken, not given.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "KO_HEAT"
+      ],
+      "art_prompt": "massive imposing figure cracking knuckles, brass knuckles glowing with neon orange sacred geometry, torn shirt revealing tattoos of Metatron's Cube, warehouse district background, steam rising from manholes, raw physical power energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_lookout",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Lookout",
+      "emoji": "\ud83d\udc41\ufe0f",
+      "cost": 1,
+      "rarity": "common",
+      "faction": "GHOST_NETWORK",
+      "hp": 8,
+      "atk": 1,
+      "def": 0,
+      "text": "ATK 1, HP 8. When played: look at opponent's hand. Must have 1+ Stash to deal damage.",
+      "flavor": "Eyes everywhere. Mouth nowhere.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "SCOUT"
+      ],
+      "art_prompt": "young figure perched on a fire escape, one glowing eye visible through darkness, hexagonal sacred geometry grid forming a surveillance network across the rooftops, neon teal scanning lines, binoculars reflecting sacred geometry, NYC rooftops at night, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_mule",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Mule",
+      "emoji": "\ud83c\udf92",
+      "cost": 2,
+      "rarity": "common",
+      "faction": "BRONX_RUNNERS",
+      "hp": 14,
+      "atk": 1,
+      "def": 1,
+      "text": "ATK 1, DEF 1, HP 14. MULE: Once per turn, move a Stash from this to another Dealer for free. Must have 1+ Stash to deal damage.",
+      "flavor": "Carries the weight so others don't have to.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "MULE"
+      ],
+      "art_prompt": "stocky figure with a heavy backpack, urban camouflage, Seed of Life sacred geometry pattern glowing on the pack's surface suggesting hidden compartments, determined walk through subway tunnel, neon blue and green path lighting, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_chemist",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Chemist",
+      "emoji": "\ud83e\uddea",
+      "cost": 3,
+      "rarity": "uncommon",
+      "faction": "BROOKLYN_CONNECT",
+      "hp": 12,
+      "atk": 2,
+      "def": 1,
+      "text": "ATK 2, DEF 1, HP 12. Your Stash cards have +1 ATK bonus. When you play a Stash: draw 1 card. Must have 1+ Stash to deal damage.",
+      "flavor": "Precision is profit.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "STASH_MASTERY",
+        "DRAW_ON_STASH"
+      ],
+      "art_prompt": "brilliant chemist in makeshift lab, beakers glowing with sacred geometry liquids \u2014 Flower of Life in green, Sri Yantra in blue, Metatron's Cube in gold, protective goggles reflecting neon formulas, Brooklyn brownstone basement, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_fixer",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "The Fixer",
+      "emoji": "\ud83e\udd1d",
+      "cost": 3,
+      "rarity": "uncommon",
+      "faction": "UPTOWN_SYNDICATE",
+      "hp": 13,
+      "atk": 2,
+      "def": 2,
+      "text": "ATK 2, DEF 2, HP 13. CONNECTION: When played, search deck for any Action card, reveal it, add to hand. Must have 1+ Stash to deal damage.",
+      "flavor": "Every problem has a price. I know them all.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "CONNECTION"
+      ],
+      "art_prompt": "impeccably dressed middle-aged man, silk suit with subtle Metatron's Cube pin, handshake forming Seed of Life sacred geometry light between two shadowy figures, penthouse office, city lights through window forming hexagonal grid, neon gold aura of connections, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_smuggler",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Smuggler",
+      "emoji": "\ud83d\udea2",
+      "cost": 3,
+      "rarity": "uncommon",
+      "faction": "GHOST_NETWORK",
+      "hp": 12,
+      "atk": 3,
+      "def": 0,
+      "text": "ATK 3, HP 12. TRAVEL: When you play a Borough, move this there. At Borough: +1 ATK. Must have 1+ Stash to deal damage.",
+      "flavor": "Borders are just suggestions.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "TRAVEL",
+        "BOROUGH_BONUS"
+      ],
+      "art_prompt": "stealthy figure on a cargo ship deck at night, NYC harbor lights, containers glowing with sacred geometry shipping codes, Flower of Life patterns on cargo manifests, neon teal shipping lanes cutting through dark water, mysterious cargo, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_queenpin",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Queenpin",
+      "emoji": "\ud83d\udc78",
+      "cost": 4,
+      "rarity": "rare",
+      "faction": "UPTOWN_SYNDICATE",
+      "hp": 17,
+      "atk": 3,
+      "def": 3,
+      "text": "ATK 3, DEF 3, HP 17. SYNDICATE: Your other Uptown Syndicate Dealers get +1 ATK. When a Dealer enters: gain 1 Heat. Must have 1+ Stash to deal damage.",
+      "flavor": "She built the empire while the men played games.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "SYNDICATE",
+        "HEAT_ON_ENTRY"
+      ],
+      "art_prompt": "elegant powerful woman on a throne of gold and sacred geometry, Metatron's Cube crown floating above her head, Queens borough skyline behind her, neon gold and purple aura, diamonds catching hexagonal light patterns, absolute authority energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_og",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "The OG",
+      "emoji": "\ud83d\udc74",
+      "cost": 4,
+      "rarity": "rare",
+      "faction": "STREET_CREW",
+      "hp": 18,
+      "atk": 2,
+      "def": 3,
+      "text": "ATK 2, DEF 3, HP 18. TURF WAR: While you control 3+ Boroughs, this has +3 ATK and 'Cannot be targeted by Actions.' Must have 1+ Stash to deal damage.",
+      "flavor": "Survived three wars. Not stopping now.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "TURF_WAR",
+        "ACTION_IMMUNE_TURF"
+      ],
+      "art_prompt": "elderly but imposing figure, cane topped with glowing Metatron's Cube, weathered face telling decades of stories, Bronx housing project rooftop at dawn, neighborhood respect radiating as neon orange sacred geometry aura, young crew members in background looking up, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_hacker",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Zero Day",
+      "emoji": "\ud83d\udcbb",
+      "cost": 3,
+      "rarity": "rare",
+      "faction": "GHOST_NETWORK",
+      "hp": 11,
+      "atk": 3,
+      "def": 1,
+      "text": "ATK 3, DEF 1, HP 11. CRYPTO: You may pay Heat costs from your discard pile. ANONYMOUS: Cannot be targeted by opponent's Actions. Must have 1+ Stash to deal damage.",
+      "flavor": "The system is just code. Code breaks.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "CRYPTO",
+        "ANONYMOUS"
+      ],
+      "art_prompt": "androgynous hacker in dark hoodie, multiple holographic screens forming sacred geometry code cascades \u2014 Merkaba, Sri Yantra, hexagonal grids \u2014 fingers dancing through neon teal data streams, server room cooling fans, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_federal",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Special Agent",
+      "emoji": "\ud83c\udfdb\ufe0f",
+      "cost": 4,
+      "rarity": "rare",
+      "faction": "FEDERAL_TASKFORCE",
+      "hp": 15,
+      "atk": 3,
+      "def": 2,
+      "text": "ATK 3, DEF 2, HP 15. FEDERAL_HEAT: Opponent's Action cards cost +1 Heat. When this enters: destroy target Stash. Must have 1+ Stash to deal damage.",
+      "flavor": "We don't need warrants. We have results.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "FEDERAL_HEAT",
+        "ENTRY_DESTROY_STASH"
+      ],
+      "art_prompt": "FBI agent in tactical gear, badge glowing with harsh white sacred geometry, hexagonal raid formation light patterns cutting through dark warehouse, evidence bags marked with Metatron's Cube seals, cold blue-white neon authority, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_cartel",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Cartel Liaison",
+      "emoji": "\ud83e\udd1d",
+      "cost": 4,
+      "rarity": "legendary",
+      "faction": "UPTOWN_SYNDICATE",
+      "hp": 18,
+      "atk": 4,
+      "def": 2,
+      "text": "ATK 4, DEF 2, HP 18. CARTEL: Once per game, search your collection (outside deck) for any Stash and play it free. PRESTIGE. LAUNDER: When your Stash is discarded, gain 1 Heat. Must have 1+ Stash to deal damage.",
+      "flavor": "The border is just a line on a map. We own both sides.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "CARTEL",
+        "PRESTIGE",
+        "LAUNDER"
+      ],
+      "art_prompt": "charismatic international operator, private jet hangar, briefcase glowing with Metatron's Cube sacred geometry containing contracts, passport stamps forming Flower of Life pattern, neon gold and green international money energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_assassin",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Silencer",
+      "emoji": "\ud83d\udd2b",
+      "cost": 3,
+      "rarity": "legendary",
+      "faction": "GHOST_NETWORK",
+      "hp": 14,
+      "atk": 5,
+      "def": 0,
+      "text": "ATK 5, HP 14. HASTE. DEAD_DROP: Play face-down. Reveal: destroy target Dealer with 3 or less DEF. Must have 1+ Stash to deal damage. PRESTIGE.",
+      "flavor": "No name. No face. Only the bill.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "HASTE",
+        "DEAD_DROP",
+        "PRESTIGE"
+      ],
+      "art_prompt": "faceless assassin in tactical gear, suppressed pistol forming Sri Yantra sacred geometry muzzle flash, single bullet trailing hexagonal light, target seen through scope crosshairs as Metatron's Cube, cold neon blue and white execution energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_legacy",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Legacy",
+      "emoji": "\ud83d\udc68\u200d\ud83d\udc66",
+      "cost": 5,
+      "rarity": "legendary",
+      "faction": "STREET_CREW",
+      "hp": 22,
+      "atk": 4,
+      "def": 3,
+      "text": "ATK 4, DEF 3, HP 22. LEGACY: When this enters, return a Dealer from your discard to play. Your Street Crew Dealers have +1 HP. Must have 1+ Stash to deal damage. PRESTIGE.",
+      "flavor": "The name lives on. The work continues.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "LEGACY_RECRUIT",
+        "FACTION_HP_BOOST",
+        "PRESTIGE"
+      ],
+      "art_prompt": "father and son figures, generational handoff, glowing Metatron's Cube passing between their hands like a torch, Harlem brownstone stoop at sunset, neighborhood watching with respect, neon orange and gold legacy energy, sacred geometry family tree in background, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_queen_bee",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Queen Bee",
+      "emoji": "\ud83d\udc1d",
+      "cost": 4,
+      "rarity": "legendary",
+      "faction": "BROOKLYN_CONNECT",
+      "hp": 16,
+      "atk": 3,
+      "def": 2,
+      "text": "ATK 3, DEF 2, HP 16. HIVE: Your Stash cards cost 1 less Heat (min 0). When you attach Stash: create a 1/1 Bee token Dealer. Must have 1+ Stash to deal damage. PRESTIGE.",
+      "flavor": "Every worker serves the hive. The hive serves the queen.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "HIVE_STASH_DISCOUNT",
+        "TOKEN_GENERATION",
+        "PRESTIGE"
+      ],
+      "art_prompt": "regal woman with crown of golden honeycomb sacred geometry, Worker Bee drones as hexagonal light constructs forming Flower of Life around her, Brooklyn rooftop garden with impossible glowing flora, neon green and gold organic technology energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_mayor",
+      "set": "CTC",
+      "type": "dealer",
+      "name": "Mayor's Ear",
+      "emoji": "\ud83c\udfdb\ufe0f",
+      "cost": 5,
+      "rarity": "legendary",
+      "faction": "FEDERAL_TASKFORCE",
+      "hp": 17,
+      "atk": 3,
+      "def": 4,
+      "text": "ATK 3, DEF 4, HP 17. CORRUPTION: Opponent's Boroughs generate 0 Heat. Your Federal cards cost 1 less. When you play an Action: draw 1. Must have 1+ Stash to deal damage. PRESTIGE.",
+      "flavor": "The law bends. The price is right.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "CORRUPTION",
+        "FEDERAL_DISCOUNT",
+        "ACTION_DRAW",
+        "PRESTIGE"
+      ],
+      "art_prompt": "corrupt politician in city hall, shadowy handshake with federal agent, Metatron's Cube gavel, legislative documents glowing with Sri Yantra sacred geometry corruption patterns, neon purple and red backroom deal energy, Manhattan skyline through window, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "d_prison_king",
+      "set": "EXP3",
+      "type": "dealer",
+      "name": "Prison King",
+      "emoji": "\ud83d\udc51",
+      "cost": 5,
+      "rarity": "legendary",
+      "faction": "STREET_CREW",
+      "hp": 25,
+      "atk": 4,
+      "def": 4,
+      "text": "ATK 4, DEF 4, HP 25. COMMISSARY: At start of your turn, add a random Common Stash to hand. CONTRABAND: Your Stash survives Dealer KO. YARD: This Dealer cannot leave play. Must have 1+ Stash to deal damage. PRESTIGE.",
+      "flavor": "Even behind bars, he runs the city.",
+      "keywords": [
+        "SUPPLY_CHAIN",
+        "COMMISSARY",
+        "CONTRABAND",
+        "YARD",
+        "PRESTIGE"
+      ],
+      "art_prompt": "imposing figure in prison yard, weightlifting, Metatron's Cube tattoo glowing on massive shoulders, cell bars forming sacred geometry Flower of Life pattern, contraband packages floating as Seed of Life light between inmates, neon orange and green prison economy energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_weed",
+      "set": "SCE",
+      "type": "stash",
+      "name": "Weed",
+      "emoji": "\ud83d\udc9a",
+      "cost": 1,
+      "rarity": "common",
+      "drug": "weed",
+      "atkBonus": 1,
+      "text": "+1 ATK. Brooklyn: costs 0 Heat. LAUNDER: When discarded, gain 1 Heat.",
+      "flavor": "Volume game.",
+      "keywords": [
+        "BROOKLYN_BONUS",
+        "LAUNDER"
+      ],
+      "art_prompt": "cannabis plant growing through a glowing Flower of Life sacred geometry mandala, emerald green and neon orange luminescence, crystalline trichomes catching neon light, geometric hexagonal grid background, botanical sacred geometry, dark background, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_ludes",
+      "set": "SCE",
+      "type": "stash",
+      "name": "Ludes",
+      "emoji": "\u2764\ufe0f",
+      "cost": 0,
+      "rarity": "common",
+      "drug": "ludes",
+      "atkBonus": 0,
+      "special": "heal2",
+      "text": "+0 ATK but heals 2 HP on your Dealer. Free. LAUNDER.",
+      "flavor": "Old school medicine.",
+      "keywords": [
+        "HEAL_ON_PLAY",
+        "LAUNDER"
+      ],
+      "art_prompt": "scattered round pills glowing with warm neon red and orange light, Seed of Life sacred geometry formed by the circular pills arranged in a pattern, soft hazy warm glow suggesting sedation, geometric background, pills floating in sacred geometric formation, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_acid",
+      "set": "SCE",
+      "type": "stash",
+      "name": "Acid",
+      "emoji": "\ud83d\udc9c",
+      "cost": 1,
+      "rarity": "common",
+      "drug": "acid",
+      "atkBonus": 1,
+      "special": "confuse20",
+      "text": "+1 ATK. On each attack: 25% chance opponent skips their next draw.",
+      "flavor": "Everything is different.",
+      "keywords": [
+        "CONFUSE_ON_ATTACK"
+      ],
+      "art_prompt": "small blotter paper squares arranged in a Flower of Life sacred geometry pattern, psychedelic purple and violet neon glow emanating from each square, geometric fractals and sacred geometry spirals radiating outward, surreal visionary art style, cosmic geometric energy, dark background, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_speed",
+      "set": "SCE",
+      "type": "stash",
+      "name": "Speed",
+      "emoji": "\ud83d\udc99",
+      "cost": 1,
+      "rarity": "common",
+      "drug": "speed",
+      "atkBonus": 1,
+      "special": "double_attack",
+      "text": "+1 ATK. ONCE: Your Dealer attacks twice this turn. Bronx: +1 bonus ATK.",
+      "flavor": "Double time.",
+      "keywords": [
+        "DOUBLE_ATTACK",
+        "BRONX_BONUS"
+      ],
+      "art_prompt": "crystalline amphetamine shards arranged in a Merkaba sacred geometry star formation, electric blue and white neon lightning crackling between the crystals, kinetic energy, speed lines forming hexagonal patterns, explosive geometric energy radiating outward, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_heroin",
+      "set": "SCE",
+      "type": "stash",
+      "name": "Heroin",
+      "emoji": "\ud83d\udfe4",
+      "cost": 2,
+      "rarity": "uncommon",
+      "drug": "heroin",
+      "atkBonus": 2,
+      "text": "+2 ATK. Bronx: +1 bonus ATK. LAUNDER.",
+      "flavor": "Brown sugar.",
+      "keywords": [
+        "BRONX_BONUS",
+        "LAUNDER"
+      ],
+      "art_prompt": "dark amber powder forming a Sri Yantra sacred geometry mandala pattern, warm brown and deep gold neon glow, smoke wisps tracing geometric lines, ritualistic energy, ominous beauty, sacred geometry etched in shadow and light, dark background, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_coke",
+      "set": "SCE",
+      "type": "stash",
+      "name": "Cocaine",
+      "emoji": "\ud83e\udd0d",
+      "cost": 2,
+      "rarity": "rare",
+      "drug": "cocaine",
+      "atkBonus": 3,
+      "text": "+3 ATK. Highest power standard Stash. Pure ATK. LAUNDER.",
+      "flavor": "White gold.",
+      "keywords": [
+        "LAUNDER"
+      ],
+      "art_prompt": "white powder arranged in a perfect Flower of Life sacred geometry pattern on a dark mirror surface, brilliant white and gold neon glow, crystalline geometric structure, high-value energy, sharp clean lines forming sacred geometry, light refracting through crystal formations, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_mystery",
+      "set": "SCE",
+      "type": "stash",
+      "name": "Mystery Stash",
+      "emoji": "\u2753",
+      "cost": 1,
+      "rarity": "uncommon",
+      "drug": "random",
+      "atkBonus": 0,
+      "special": "random_1_3",
+      "text": "Random +1, +2, or +3 ATK. You don't know until played.",
+      "flavor": "Found in a locker. No questions.",
+      "keywords": [
+        "RANDOM_ATK"
+      ],
+      "art_prompt": "sealed dark package wrapped in glowing sacred geometry sigils, unknown contents, teal and blue question mark energy field, Metatron's Cube imprinted on the packaging in glowing neon light, mystery and intrigue, geometric energy sealing the unknown, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_golden",
+      "set": "SCE",
+      "type": "stash",
+      "name": "Golden Brick",
+      "emoji": "\ud83c\udfc5",
+      "cost": 3,
+      "rarity": "legendary",
+      "drug": "cocaine",
+      "atkBonus": 5,
+      "special": "deal2",
+      "text": "LEGENDARY: +5 ATK AND deal 1 damage when attached. Highest power Stash. PRESTIGE.",
+      "flavor": "The score of a lifetime.",
+      "keywords": [
+        "ON_ATTACH_DAMAGE",
+        "PRESTIGE"
+      ],
+      "art_prompt": "solid gold brick radiating intense neon purple and crimson sacred geometry light, Metatron's Cube carved into the gold surface glowing with inner light, supreme wealth energy, geometric patterns of pure gold and sacred light, legendary rarity feel, almost divine object, dark background, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_fentanyl",
+      "set": "CTC",
+      "type": "stash",
+      "name": "Fentanyl",
+      "emoji": "\u2620\ufe0f",
+      "cost": 3,
+      "rarity": "rare",
+      "drug": "fentanyl",
+      "atkBonus": 4,
+      "text": "+4 ATK. When this Dealer KOs another: opponent loses 3 HP. High risk, high reward. LAUNDER.",
+      "flavor": "One grain kills. One deal makes millions.",
+      "keywords": [
+        "KO_PENALTY",
+        "LAUNDER"
+      ],
+      "art_prompt": "deadly white powder forming a skull-shaped Sri Yantra sacred geometry, tiny lethal crystals glowing with cold neon blue and white, warning symbols etched in geometric patterns, dark mirror surface reflecting death energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_meth",
+      "set": "CTC",
+      "type": "stash",
+      "name": "Crystal Meth",
+      "emoji": "\ud83d\udc8e",
+      "cost": 2,
+      "rarity": "uncommon",
+      "drug": "meth",
+      "atkBonus": 2,
+      "text": "+2 ATK. Your Dealer gains HASTE. At end of turn: Dealer takes 1 damage (burnout). LAUNDER.",
+      "flavor": "Burn bright. Burn fast.",
+      "keywords": [
+        "GRANT_HASTE",
+        "BURNOUT",
+        "LAUNDER"
+      ],
+      "art_prompt": "crystalline shards forming a perfect Merkaba star, electric blue and violet neon lightning arcing between facets, intense kinetic energy, sacred geometry speed lines, beautiful but dangerous geometric purity, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_xanax",
+      "set": "CTC",
+      "type": "stash",
+      "name": "Xanax Bars",
+      "emoji": "\ud83d\udc8a",
+      "cost": 1,
+      "rarity": "common",
+      "drug": "xanax",
+      "atkBonus": 1,
+      "special": "shield1",
+      "text": "+1 ATK. Your Dealer gains SHIELD (blocks next hit). Queens: Free to play.",
+      "flavor": "Chill out. The heat can't touch you.",
+      "keywords": [
+        "GRANT_SHIELD",
+        "QUEENS_BONUS"
+      ],
+      "art_prompt": "rectangular white pills arranged in a protective Sri Yantra sacred geometry shield formation, soft blue and teal calming neon glow, geometric barrier energy, prescription bottle with Metatron's Cube label, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_oxy",
+      "set": "CTC",
+      "type": "stash",
+      "name": "OxyContin",
+      "emoji": "\ud83d\udc8a",
+      "cost": 2,
+      "rarity": "uncommon",
+      "drug": "oxy",
+      "atkBonus": 2,
+      "special": "heal3",
+      "text": "+2 ATK. Heal 3 HP on attach. Staten Island: +1 extra ATK.",
+      "flavor": "Legal poison. Prescription profit.",
+      "keywords": [
+        "HEAL_ON_ATTACH",
+        "STATEN_BONUS"
+      ],
+      "art_prompt": "orange prescription pills forming a healing Flower of Life sacred geometry pattern, warm amber and gold neon medical cross energy, geometric pharmacy precision, pill bottle with sacred geometry label, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_lean",
+      "set": "CTC",
+      "type": "stash",
+      "name": "Lean (Codeine)",
+      "emoji": "\ud83e\udd64",
+      "cost": 1,
+      "rarity": "common",
+      "drug": "lean",
+      "atkBonus": 1,
+      "text": "+1 ATK. When attached: draw 1 card. Brooklyn: costs 0 Heat.",
+      "flavor": "Sip slow. Move fast.",
+      "keywords": [
+        "DRAW_ON_ATTACH",
+        "BROOKLYN_BONUS"
+      ],
+      "art_prompt": "purple drank in double-stacked styrofoam cups, liquid forming Seed of Life sacred geometry ripples, neon purple and pink glow, ice cubes as geometric crystals, Houston-to-NYC supply line energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_molly",
+      "set": "CTC",
+      "type": "stash",
+      "name": "Molly (MDMA)",
+      "emoji": "\ud83d\udc8a",
+      "cost": 2,
+      "rarity": "uncommon",
+      "drug": "molly",
+      "atkBonus": 2,
+      "text": "+2 ATK. Your Dealer cannot be frozen. When this attacks: opponent's Dealer loses 1 DEF.",
+      "flavor": "Everyone's your friend. Until they're not.",
+      "keywords": [
+        "ANTI_FREEZE",
+        "STRIP_DEF"
+      ],
+      "art_prompt": "crystalline powder capsules forming a heart-shaped Flower of Life sacred geometry, euphoric neon pink and teal energy radiating love frequency, geometric empathy patterns, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_shrooms",
+      "set": "CTC",
+      "type": "stash",
+      "name": "Magic Mushrooms",
+      "emoji": "\ud83c\udf44",
+      "cost": 1,
+      "rarity": "common",
+      "drug": "shrooms",
+      "atkBonus": 1,
+      "special": "random_0_2",
+      "text": "+1 ATK. Random: 0, +1, or +2 bonus ATK each attack. Trip effect.",
+      "flavor": "Reality is optional.",
+      "keywords": [
+        "RANDOM_ATK_VARIABLE"
+      ],
+      "art_prompt": "psychedelic mushrooms growing in a sacred geometry spiral \u2014 Fibonacci Flower of Life pattern, neon green and blue bioluminescent glow, fractal mycelium network connecting to geometric roots, visionary art style, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_dmt",
+      "set": "CTC",
+      "type": "stash",
+      "name": "DMT",
+      "emoji": "\ud83c\udf08",
+      "cost": 3,
+      "rarity": "rare",
+      "drug": "dmt",
+      "atkBonus": 3,
+      "special": "breakthrough",
+      "text": "+3 ATK. BREAKTHROUGH: Once per game, this Dealer ignores all DEF and deals damage directly to HP.",
+      "flavor": "Ten minutes. Forever changed.",
+      "keywords": [
+        "BREAKTHROUGH"
+      ],
+      "art_prompt": "transdimensional geometric entity, Metatron's Cube unfolding into infinite Sri Yantra layers, blinding neon white and rainbow sacred geometry, machine elves as geometric light beings, breakthrough tunnel vision, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_ketamine",
+      "set": "CTC",
+      "type": "stash",
+      "name": "Ketamine",
+      "emoji": "\ud83d\udc89",
+      "cost": 2,
+      "rarity": "uncommon",
+      "drug": "ketamine",
+      "atkBonus": 1,
+      "special": "dissociate",
+      "text": "+1 ATK. DISSOCIATE: When your Dealer would be KO'd, instead it survives at 1 HP and this Stash is discarded.",
+      "flavor": "The hole goes deep. But you come back.",
+      "keywords": [
+        "CHEAT_DEATH"
+      ],
+      "art_prompt": "medical vial and syringe, liquid forming a protective geometric dissociation chamber \u2014 hexagonal grid separating consciousness from pain, neon teal and white clinical glow, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_ghb",
+      "set": "CTC",
+      "type": "stash",
+      "name": "GHB",
+      "emoji": "\ud83e\udd5b",
+      "cost": 1,
+      "rarity": "common",
+      "drug": "ghb",
+      "atkBonus": 1,
+      "special": "sleep",
+      "text": "+1 ATK. SLEEP: 25% chance on attack: opponent's Dealer cannot attack next turn (frozen).",
+      "flavor": "Date rape drug? No. Club closer. Profit maker.",
+      "keywords": [
+        "FREEZE_ON_ATTACK"
+      ],
+      "art_prompt": "clear liquid in small vial, droplets forming Seed of Life sacred geometry pattern as they fall, neon blue hypnotic glow, date-night danger energy, geometric roofie warning symbols, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_k2",
+      "set": "CTC",
+      "type": "stash",
+      "name": "K2 / Spice",
+      "emoji": "\ud83c\udf3f",
+      "cost": 0,
+      "rarity": "common",
+      "drug": "k2",
+      "atkBonus": 2,
+      "special": "chaos",
+      "text": "+2 ATK. FREE. CHAOS: Each turn, roll die \u2014 1-2: -1 ATK, 3-4: no change, 5-6: +1 ATK. Unpredictable.",
+      "flavor": "Synthetic roulette. Cheap high. Dangerous batch.",
+      "keywords": [
+        "FREE",
+        "CHAOS_VARIABLE"
+      ],
+      "art_prompt": "synthetic herbal mixture in foil packet, chaotic unstable sacred geometry \u2014 broken Metatron's Cube, glitching Flower of Life, neon green and red warning energy, chemical instability, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_steroids",
+      "set": "CTC",
+      "type": "stash",
+      "name": "Steroids (Tren)",
+      "emoji": "\ud83d\udc89",
+      "cost": 2,
+      "rarity": "uncommon",
+      "drug": "steroids",
+      "atkBonus": 3,
+      "text": "+3 ATK. Your Dealer gains +2 DEF. At end of your turn: Dealer takes 1 damage (roid rage).",
+      "flavor": "Strength has a price. The bill comes due.",
+      "keywords": [
+        "GRANT_DEF",
+        "SELF_DAMAGE"
+      ],
+      "art_prompt": "vial of golden oil, syringe needle forming sacred geometry injection pattern, muscular figure with Metatron's Cube veins glowing, geometric aggression energy, neon gold and red enhancement, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_adderall",
+      "set": "CTC",
+      "type": "stash",
+      "name": "Adderall",
+      "emoji": "\ud83d\udc8a",
+      "cost": 1,
+      "rarity": "common",
+      "drug": "adderall",
+      "atkBonus": 1,
+      "text": "+1 ATK. FOCUS: Your Dealer's attacks cannot be blocked by SHIELD. Draw 1 card on attach.",
+      "flavor": "Prescription focus. Street application.",
+      "keywords": [
+        "PIERCE_SHIELD",
+        "DRAW_ON_ATTACH"
+      ],
+      "art_prompt": "orange and white capsules arranged in a focused Merkaba sacred geometry pattern, laser-sharp neon orange concentration beams, geometric ADHD-to-superpower energy, prescription bottle with sacred geometry label, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_crack",
+      "set": "CTC",
+      "type": "stash",
+      "name": "Crack Cocaine",
+      "emoji": "\ud83e\udea8",
+      "cost": 1,
+      "rarity": "uncommon",
+      "drug": "crack",
+      "atkBonus": 3,
+      "special": "fiend",
+      "text": "+3 ATK. FIEND: When this Dealer attacks, it must attack again if able (cannot stop). Costs 1 Heat each extra attack.",
+      "flavor": "One hit. Forever chasing.",
+      "keywords": [
+        "MANDATORY_EXTRA_ATTACK",
+        "FIEND"
+      ],
+      "art_prompt": "crack rocks forming a jagged broken Sri Yantra sacred geometry, harsh white and yellow neon glow, desperate fiend energy, geometric addiction spiral, pipe smoke as sacred geometry, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_pcp",
+      "set": "CTC",
+      "type": "stash",
+      "name": "PCP (Angel Dust)",
+      "emoji": "\ud83d\udc7c",
+      "cost": 2,
+      "rarity": "rare",
+      "drug": "pcp",
+      "atkBonus": 4,
+      "special": "superhuman",
+      "text": "+4 ATK. SUPERHUMAN: Your Dealer ignores DEF, cannot be frozen, and takes 0 damage from Actions. At end of turn: Dealer takes 2 damage.",
+      "flavor": "Feel no pain. Break every bone. Keep coming.",
+      "keywords": [
+        "IGNORE_DEF",
+        "IMMUNE_FREEZE",
+        "IMMUNE_ACTIONS",
+        "SELF_DAMAGE_HEAVY"
+      ],
+      "art_prompt": "angelic figure with shattered wings, PCP dust forming holy geometric aura \u2014 Metatron's Cube halo, Sri Yantra wings, superhuman strength energy, neon white and gold divine madness, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_cartel_brick",
+      "set": "CTC",
+      "type": "stash",
+      "name": "Cartel Brick",
+      "emoji": "\ud83e\uddf1",
+      "cost": 3,
+      "rarity": "legendary",
+      "drug": "cocaine",
+      "atkBonus": 5,
+      "special": "cartel_import",
+      "text": "LEGENDARY: +5 ATK. CARTEL: When attached, search your collection for any Stash and attach it free. LAUNDER. PRESTIGE.",
+      "flavor": "Pressed in Colombia. Sold in Manhattan. Everyone gets paid.",
+      "keywords": [
+        "CARTEL_IMPORT",
+        "LAUNDER",
+        "PRESTIGE"
+      ],
+      "art_prompt": "compressed cocaine brick, vacuum sealed, Metatron's Cube sacred geometry pressed into the surface glowing neon gold, cartel stamp as Flower of Life, billions in street value, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_dark_web",
+      "set": "EXP2",
+      "type": "stash",
+      "name": "Dark Web Special",
+      "emoji": "\ud83c\udf10",
+      "cost": 2,
+      "rarity": "rare",
+      "drug": "mystery",
+      "atkBonus": 2,
+      "special": "crypto_anonymous",
+      "text": "+2 ATK. CRYPTO: Pay cost from discard. ANONYMOUS: Cannot be targeted. When discarded: draw 1.",
+      "flavor": "Tor browser. Bitcoin. Discreet shipping.",
+      "keywords": [
+        "CRYPTO",
+        "ANONYMOUS",
+        "DRAW_ON_DISCARD"
+      ],
+      "art_prompt": "glowing onion router logo, Tor circuit as sacred geometry hexagonal layers, Bitcoin blockchain as Flower of Life, anonymous package delivery by drone, neon teal and purple cyberpunk energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_prison_hooch",
+      "set": "EXP3",
+      "type": "stash",
+      "name": "Prison Hooch",
+      "emoji": "\ud83c\udf77",
+      "cost": 0,
+      "rarity": "common",
+      "drug": "hooch",
+      "atkBonus": 1,
+      "special": "contraband",
+      "text": "+1 ATK. FREE. CONTRABAND: When your Dealer is KO'd, this returns to hand instead of discard. YARD.",
+      "flavor": "Fermented in a toilet. Tastes like freedom.",
+      "keywords": [
+        "FREE",
+        "CONTRABAND",
+        "YARD"
+      ],
+      "art_prompt": "plastic bag of fermented fruit, toilet wine, bubbles forming Seed of Life sacred geometry, desperate ingenuity neon orange glow, cell bars as geometric constraints, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_prison_shank",
+      "set": "EXP3",
+      "type": "stash",
+      "name": "Shank",
+      "emoji": "\ud83d\udd2a",
+      "cost": 1,
+      "rarity": "uncommon",
+      "drug": "weapon",
+      "atkBonus": 2,
+      "special": "contraband_weapon",
+      "text": "+2 ATK. CONTRABAND: Survives Dealer KO. When this Dealer KOs another: draw 1. YARD.",
+      "flavor": "Toothbrush handle. Razor blade. Tape. Art.",
+      "keywords": [
+        "CONTRABAND",
+        "KO_DRAW",
+        "YARD"
+      ],
+      "art_prompt": "improvised prison weapon, toothbrush handle with razor blade, tape grip glowing with sacred geometry danger, Metatron's Cube etched into metal, neon red lethal intent, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_commissary_pack",
+      "set": "EXP3",
+      "type": "stash",
+      "name": "Commissary Pack",
+      "emoji": "\ud83d\udce6",
+      "cost": 2,
+      "rarity": "rare",
+      "drug": "supplies",
+      "atkBonus": 1,
+      "special": "commissary_value",
+      "text": "+1 ATK. COMMISSARY: At start of your turn, add a random Common Stash from your deck to hand. YARD.",
+      "flavor": "Ramen, coffee, stamps. Currency inside.",
+      "keywords": [
+        "COMMISSARY",
+        "YARD"
+      ],
+      "art_prompt": "prison commissary care package, ramen noodles forming hexagonal grid, coffee packets as sacred geometry currency, stamps with Metatron's Cube perforation, neon orange institutional glow, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "s_phone_contraband",
+      "set": "EXP3",
+      "type": "stash",
+      "name": "Contraband Phone",
+      "emoji": "\ud83d\udcf1",
+      "cost": 3,
+      "rarity": "legendary",
+      "drug": "tech",
+      "atkBonus": 3,
+      "special": "phone_connection",
+      "text": "+3 ATK. CONTRABAND. PHONE: Once per turn, look at opponent's hand or top 3 cards of their deck. YARD. PRESTIGE.",
+      "flavor": "One bar of service. Unlimited power.",
+      "keywords": [
+        "CONTRABAND",
+        "SCOUT_REPEATABLE",
+        "YARD",
+        "PRESTIGE"
+      ],
+      "art_prompt": "smuggled smartphone in prison cell, screen glowing with sacred geometry connection lines to outside world, hexagonal cell tower network, Metatron's Cube signal strength, neon teal lifeline energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_hustle",
+      "set": "SCE",
+      "type": "action",
+      "name": "Hustle Hard",
+      "emoji": "\u26a1",
+      "cost": 0,
+      "rarity": "common",
+      "effect": "draw1_heat1",
+      "text": "Draw 1 card and gain 1 Heat token. Free.",
+      "flavor": "Always be working.",
+      "keywords": [
+        "FREE",
+        "DRAW",
+        "HEAT_GAIN"
+      ],
+      "art_prompt": "fist raised in determination, neon green and orange energy burst forming a Sri Yantra sacred geometry pattern radiating from the fist, street grind energy, NYC hustle culture, explosive geometric power, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_reup",
+      "set": "SCE",
+      "type": "action",
+      "name": "Re-Up",
+      "emoji": "\ud83d\udd04",
+      "cost": 1,
+      "rarity": "common",
+      "effect": "draw2",
+      "text": "Draw 2 cards.",
+      "flavor": "Stay stocked.",
+      "keywords": [
+        "DRAW"
+      ],
+      "art_prompt": "hands exchanging messages with the user, I notice the task was to write the JSON file. Let me continue with the task and those exchange product in a dark NYC alley, geometric light beams forming a Seed of Life pattern between the hands, supply chain energy, circular sacred geometry suggesting renewal and resupply, neon orange glow, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_robbery",
+      "set": "SCE",
+      "type": "action",
+      "name": "Street Robbery",
+      "emoji": "\ud83e\uddb9",
+      "cost": 1,
+      "rarity": "common",
+      "effect": "deal1_drain",
+      "text": "Deal 1 damage. Opponent loses 1 Heat next turn.",
+      "flavor": "Wrong place. Wrong time.",
+      "keywords": [
+        "DIRECT_DAMAGE",
+        "HEAT_DRAIN"
+      ],
+      "art_prompt": "shadowy figure in aggressive stance, victim silhouette in background, neon orange and red tension, Merkaba star sacred geometry forming an aggressive sharp pattern in the air, threat energy, NYC alley, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_laylow",
+      "set": "SCE",
+      "type": "action",
+      "name": "Lay Low",
+      "emoji": "\ud83d\ude36",
+      "cost": 1,
+      "rarity": "common",
+      "effect": "shield1",
+      "text": "Your Active Dealer gains SHIELD (absorbs next hit for 0 damage).",
+      "flavor": "Ghost mode.",
+      "keywords": [
+        "GRANT_SHIELD"
+      ],
+      "art_prompt": "figure pressed into shadow against a wall, invisible, blending into darkness, subtle blue-grey sacred geometry hexagonal camouflage pattern making the figure nearly transparent, stillness and patience, NYC alley, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_double",
+      "set": "SCE",
+      "type": "action",
+      "name": "Double Down",
+      "emoji": "\ud83c\udfb2",
+      "cost": 1,
+      "rarity": "common",
+      "effect": "extra_attack",
+      "text": "Your Active Dealer attacks one extra time this turn.",
+      "flavor": "Greed is a strategy.",
+      "keywords": [
+        "EXTRA_ATTACK"
+      ],
+      "art_prompt": "pair of glowing dice mid-roll, sacred geometry Flower of Life pattern forming in the dice faces, neon gold and orange gambling energy, risk and reward, NYC underground casino energy, geometric lucky symbols, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_repair",
+      "set": "SCE",
+      "type": "action",
+      "name": "Street Doc",
+      "emoji": "\ud83e\ude79",
+      "cost": 1,
+      "rarity": "common",
+      "effect": "heal3",
+      "text": "Restore 3 HP to your Active Dealer.",
+      "flavor": "Fixed up. Back on the block.",
+      "keywords": [
+        "HEAL"
+      ],
+      "art_prompt": "underground medic patching up wounds in a dim apartment, neon green healing energy forming a Seed of Life sacred geometry pattern at the point of healing, care and survival energy, medical kit, NYC safe house, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_connect",
+      "set": "SCE",
+      "type": "action",
+      "name": "The Connect",
+      "emoji": "\ud83e\udd1d",
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "next_free",
+      "text": "Your next card this turn costs 0 Heat.",
+      "flavor": "Know the right people.",
+      "keywords": [
+        "NEXT_FREE"
+      ],
+      "art_prompt": "two figures meeting in shadow, handshake, neon teal sacred geometry lines connecting them like nodes in a network, Flower of Life connection pattern forming between the two figures, trust and business, dark NYC meeting spot, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_fear",
+      "set": "SCE",
+      "type": "action",
+      "name": "Make 'em Fear",
+      "emoji": "\ud83d\ude31",
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "freeze_atk",
+      "text": "Opponent's Active Dealer cannot attack next turn (frozen).",
+      "flavor": "Reputation precedes the man.",
+      "keywords": [
+        "FREEZE_ATTACK"
+      ],
+      "art_prompt": "terrifying figure casting a long shadow, intimidation energy, neon blue and cold white light, Sri Yantra sacred geometry radiating outward like a fear aura, opponent cowering in background, raw power and threat, NYC street, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_bust",
+      "set": "SCE",
+      "type": "action",
+      "name": "Police Bust",
+      "emoji": "\ud83d\ude94",
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "remove_stash",
+      "text": "Remove all Stash from opponent's Active Dealer. BUST: 4+ Stash = +3 damage to Dealer.",
+      "flavor": "Freeze. Hands where I can see 'em.",
+      "keywords": [
+        "REMOVE_STASH",
+        "BUST_MECHANIC"
+      ],
+      "art_prompt": "police raid energy, blue and red flashing lights forming hexagonal sacred geometry light patterns in the smoke, chaos and enforcement, figures scattering, badge gleaming, sacred geometry in the police light beams cutting through darkness, dark background, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_snitch",
+      "set": "SCE",
+      "type": "action",
+      "name": "Snitch",
+      "emoji": "\ud83d\udde3\ufe0f",
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "discard2",
+      "text": "Opponent discards 2 cards at random from their hand.",
+      "flavor": "Somebody talked.",
+      "keywords": [
+        "DISCARD_OPPONENT"
+      ],
+      "art_prompt": "shadowy figure whispering into a phone, backstabbing energy, neon gold informant light, lips and ear forming a Seed of Life sacred geometry betrayal pattern, duality of loyalty and treachery, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_setup",
+      "set": "SCE",
+      "type": "action",
+      "name": "The Setup",
+      "emoji": "\ud83c\udfaf",
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "deal2",
+      "text": "Deal 2 damage directly to opponent HP.",
+      "flavor": "Patience is a weapon.",
+      "keywords": [
+        "DIRECT_DAMAGE"
+      ],
+      "art_prompt": "chess piece being knocked over, strategic sabotage energy, teal neon geometric targeting reticle formed from sacred geometry Sri Yantra pattern, calculated move, NYC chess park at night, manipulation energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_heist",
+      "set": "SCE",
+      "type": "action",
+      "name": "The Heist",
+      "emoji": "\ud83d\udcb0",
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "deal3",
+      "text": "Deal 2 damage directly to opponent HP. If you control Manhattan: deal 3 instead.",
+      "flavor": "Clean job. No witnesses.",
+      "keywords": [
+        "DIRECT_DAMAGE",
+        "MANHATTAN_BONUS"
+      ],
+      "art_prompt": "masked figure breaking into a vault, gold neon explosion of Metatron's Cube sacred geometry radiating from the vault door, bags of cash, high stakes energy, the perfect score, NYC underground, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_retire",
+      "set": "SCE",
+      "type": "action",
+      "name": "Retire Dealer",
+      "emoji": "\ud83d\udc80",
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "destroy_active",
+      "text": "Destroy opponent's Active Dealer outright. They promote from bench.",
+      "flavor": "The game doesn't forgive weakness.",
+      "keywords": [
+        "DESTROY_DEALER"
+      ],
+      "art_prompt": "silhouette falling backward in slow motion, gold sacred geometry dissolving as the figure fades, end-of-line energy, Flower of Life slowly dismantling into particles of light, finality and power, dark NYC background, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_fetch",
+      "set": "SCE",
+      "type": "action",
+      "name": "Street Connect",
+      "emoji": "\ud83d\udccd",
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "fetch_borough",
+      "text": "Search your deck for any Borough card and play it immediately (free).",
+      "flavor": "One call. Problem solved.",
+      "keywords": [
+        "FETCH_BOROUGH"
+      ],
+      "art_prompt": "street map of NYC with glowing sacred geometry hexagonal network overlaid, connection nodes lighting up in teal neon at key intersections, logistics and network energy, birds-eye view of underground supply chain, Flower of Life as the network topology, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_fedraid",
+      "set": "SCE",
+      "type": "action",
+      "name": "Federal Raid",
+      "emoji": "\ud83c\udfdb\ufe0f",
+      "cost": 4,
+      "rarity": "legendary",
+      "effect": "destroy_all",
+      "text": "LEGENDARY: Destroy opponent's Active Dealer AND remove all their Stash. PRESTIGE.",
+      "flavor": "They don't knock.",
+      "keywords": [
+        "DESTROY_DEALER",
+        "REMOVE_ALL_STASH",
+        "PRESTIGE"
+      ],
+      "art_prompt": "massive federal operation, black helicopters, agents flooding in, neon purple and crimson chaos, enormous Metatron's Cube sacred geometry descending from the sky like a divine judgment, total disruption energy, the most feared card in the game, NYC skyline, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_market",
+      "set": "SCE",
+      "type": "action",
+      "name": "Market Shift",
+      "emoji": "\ud83d\udcc8",
+      "cost": 0,
+      "rarity": "uncommon",
+      "effect": "market_shift",
+      "text": "FREE. This turn: all Stash cards cost 0 Heat for both players. Price spike!",
+      "flavor": "The market moves fast.",
+      "keywords": [
+        "FREE",
+        "MARKET_SHIFT",
+        "GLOBAL_EFFECT"
+      ],
+      "art_prompt": "financial charts and price curves formed from sacred geometry Merkaba patterns, teal neon market energy, supply and demand forces visualized as sacred geometry waves, NYC stock exchange underground analog, economic power, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_intel",
+      "set": "CTC",
+      "type": "action",
+      "name": "Street Intel",
+      "emoji": "\ud83d\udc41\ufe0f",
+      "cost": 0,
+      "rarity": "common",
+      "effect": "scout3",
+      "text": "FREE. Look at opponent's hand. Draw 1 card.",
+      "flavor": "Information is the most valuable product.",
+      "keywords": [
+        "FREE",
+        "SCOUT",
+        "DRAW"
+      ],
+      "art_prompt": "hooded figure with glowing eye implant, holographic display showing opponent's hand as sacred geometry cards, neon teal surveillance data streams, Flower of Life data visualization, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_launder",
+      "set": "CTC",
+      "type": "action",
+      "name": "Money Launder",
+      "emoji": "\ud83d\udcb8",
+      "cost": 1,
+      "rarity": "common",
+      "effect": "launder",
+      "text": "Discard a Stash from your hand: gain 2 Heat and draw 1 card. LAUNDER.",
+      "flavor": "Clean money spends the same.",
+      "keywords": [
+        "LAUNDER",
+        "DISCARD_FOR_VALUE",
+        "HEAT_GAIN",
+        "DRAW"
+      ],
+      "art_prompt": "cash being washed in industrial washing machine, bills emerging clean forming Flower of Life sacred geometry patterns, neon green clean money glow, laundromat neon signs as sacred geometry, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_turf_war",
+      "set": "CTC",
+      "type": "action",
+      "name": "Turf War",
+      "emoji": "\u2694\ufe0f",
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "turf_war",
+      "text": "Both players' Active Dealers fight: each deals its ATK to the other simultaneously. TURF WAR.",
+      "flavor": "Block by block. Blood for concrete.",
+      "keywords": [
+        "TURF_WAR",
+        "SIMULTANEOUS_COMBAT"
+      ],
+      "art_prompt": "two crews facing off on opposite sides of a street, sacred geometry territorial grid lines glowing between them \u2014 hexagonal zones, Metatron's Cube boundary markers, neon orange and blue territorial energy, NYC intersection at night, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_pressure",
+      "set": "CTC",
+      "type": "action",
+      "name": "Apply Pressure",
+      "emoji": "\ud83d\udd25",
+      "cost": 1,
+      "rarity": "common",
+      "effect": "pressure",
+      "text": "Opponent loses 2 Heat. If they have 0 Heat: deal 2 damage to their Active Dealer.",
+      "flavor": "No heat. No product. No power.",
+      "keywords": [
+        "HEAT_DRAIN",
+        "PUNISH_NO_HEAT"
+      ],
+      "art_prompt": "imposing figure pressing a burning brand onto a surface, heat waves as sacred geometry Sri Yantra patterns, neon orange and red pressure energy, geometric intimidation, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_supply_drop",
+      "set": "CTC",
+      "type": "action",
+      "name": "Supply Drop",
+      "emoji": "\ud83d\udce6",
+      "cost": 2,
+      "rarity": "uncommon",
+      "effect": "supply_drop",
+      "text": "Reveal top 3 cards of your deck. Put all Stash cards into your hand. Rest to bottom.",
+      "flavor": "Air mail. Express delivery.",
+      "keywords": [
+        "STASH_TUTOR",
+        "DECK_MANIPULATION"
+      ],
+      "art_prompt": "cargo plane dropping supply crates with parachutes, crates glowing with Flower of Life sacred geometry markings, supply crates forming sacred geometry descent pattern, neon green supply line energy, NYC rooftop drop zone, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_corrupt_cop",
+      "set": "CTC",
+      "type": "action",
+      "name": "Corrupt Cop",
+      "emoji": "\ud83d\udc6e",
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "corrupt_cop",
+      "text": "Destroy target Stash. Gain Heat equal to its cost. If it was Legendary: draw 2 cards.",
+      "flavor": "Badge buys silence. Evidence disappears.",
+      "keywords": [
+        "DESTROY_STASH",
+        "HEAT_FROM_COST",
+        "LEGENDARY_BONUS"
+      ],
+      "art_prompt": "corrupt cop pocketing evidence bag, evidence glowing with Metatron's Cube sacred geometry, badge as corrupted Flower of Life, neon blue and gold corruption energy, dark precinct locker room, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_witness_protection",
+      "set": "CTC",
+      "type": "action",
+      "name": "Witness Protection",
+      "emoji": "\ud83d\udee1\ufe0f",
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "witness_protection",
+      "text": "Your Active Dealer gains: cannot be targeted, +2 DEF, and SHIELD. Lasts until your next turn.",
+      "flavor": "New name. New face. Same game.",
+      "keywords": [
+        "UNTARGETABLE",
+        "DEF_BOOST",
+        "GRANT_SHIELD",
+        "TEMPORARY"
+      ],
+      "art_prompt": "figure entering witness protection, new identity documents glowing with protective Sri Yantra sacred geometry, federal marshal escort, hexagonal witness protection shield, neon teal and white federal protection energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_hit_contract",
+      "set": "CTC",
+      "type": "action",
+      "name": "Hit Contract",
+      "emoji": "\ud83d\udccb",
+      "cost": 3,
+      "rarity": "rare",
+      "effect": "hit_contract",
+      "text": "Target Dealer with 3 or less DEF is destroyed. You gain 1 Heat. CARTEL.",
+      "flavor": "Contract signed in blood. Paid in product.",
+      "keywords": [
+        "DESTROY_DEALER_CONDITIONAL",
+        "HEAT_GAIN",
+        "CARTEL"
+      ],
+      "art_prompt": "contract on table, signature in blood forming Metatron's Cube sacred geometry, hitman's silhouette in background, payment in product as sacred geometry bricks, neon red contract energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_border_cross",
+      "set": "CTC",
+      "type": "action",
+      "name": "Border Cross",
+      "emoji": "\ud83c\udf09",
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "border_cross",
+      "text": "Move your Active Dealer to any Borough you control. It gains HASTE and +2 ATK until end of turn. TRAVEL.",
+      "flavor": "Jurisdiction ends. Opportunity begins.",
+      "keywords": [
+        "TRAVEL",
+        "GRANT_HASTE",
+        "TEMP_ATK_BOOST",
+        "BOROUGH_SYNERGY"
+      ],
+      "art_prompt": "figure crossing bridge at night, Brooklyn Bridge cables as sacred geometry hexagonal web, Metatron's Cube toll booth, neon teal and gold border crossing energy, Manhattan skyline welcoming, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_dead_drop",
+      "set": "CTC",
+      "type": "action",
+      "name": "Dead Drop",
+      "emoji": "\ud83d\udd73\ufe0f",
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "dead_drop",
+      "text": "Play face-down. On your next turn, reveal: draw 2 cards and gain 2 Heat. DEAD_DROP.",
+      "flavor": "Leave it. Come back. It's still there.",
+      "keywords": [
+        "DEAD_DROP",
+        "DELAYED_VALUE",
+        "FACE_DOWN"
+      ],
+      "art_prompt": "hollow brick in alley wall, hidden package glowing with Seed of Life sacred geometry, dead drop location marked with subtle Metatron's Cube graffiti, neon teal secret cache energy, dark alley, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_crypto_wash",
+      "set": "CTC",
+      "type": "action",
+      "name": "Crypto Wash",
+      "emoji": "\u20bf",
+      "cost": 0,
+      "rarity": "rare",
+      "effect": "crypto_wash",
+      "text": "FREE. CRYPTO: Pay costs from discard pile this turn. Discard a card: gain 1 Heat. CRYPTO.",
+      "flavor": "Blockchain doesn't ask questions. It just confirms.",
+      "keywords": [
+        "FREE",
+        "CRYPTO",
+        "DISCARD_FOR_HEAT",
+        "DISCARD_PILE_AS_RESOURCE"
+      ],
+      "art_prompt": "Bitcoin blockchain as glowing Flower of Life sacred geometry, cryptocurrency washing through tumblers as sacred geometry Merkaba tumblers, neon orange and gold blockchain energy, dark web marketplace aesthetic, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_syndicate_summit",
+      "set": "CTC",
+      "type": "action",
+      "name": "Syndicate Summit",
+      "emoji": "\ud83e\udd1d",
+      "cost": 3,
+      "rarity": "rare",
+      "effect": "syndicate_summit",
+      "text": "All your Dealers gain +1 ATK permanently. SYNDICATE: If you control 3+ Uptown Syndicate Dealers, draw 3 cards.",
+      "flavor": "The families meet. Territories divided. Peace... for now.",
+      "keywords": [
+        "PERMANENT_ATK_BOOST",
+        "SYNDICATE",
+        "FACTION_DRAW"
+      ],
+      "art_prompt": "round table of crime bosses, each with Metatron's Cube family crest, territorial map of NYC as Flower of Life sacred geometry divided into sectors, neon gold summit energy, cigar smoke as sacred geometry, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_federal_indictment",
+      "set": "CTC",
+      "type": "action",
+      "name": "Federal Indictment",
+      "emoji": "\u2696\ufe0f",
+      "cost": 3,
+      "rarity": "legendary",
+      "effect": "federal_indictment",
+      "text": "LEGENDARY: Opponent reveals hand. Choose a card: it's exiled. All their Dealers lose 1 ATK. FEDERAL_HEAT. PRESTIGE.",
+      "flavor": "RICO case. 20 years. Everyone flips.",
+      "keywords": [
+        "HAND_DISRUPTION",
+        "EXILE",
+        "GLOBAL_DEBUFF",
+        "FEDERAL_HEAT",
+        "PRESTIGE"
+      ],
+      "art_prompt": "federal courthouse, RICO indictment document glowing with harsh Metatron's Cube sacred geometry, defendant table with crime family, neon purple and white federal prosecution energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_prestige_power",
+      "set": "CTC",
+      "type": "action",
+      "name": "Prestige Power Play",
+      "emoji": "\u2b50",
+      "cost": 4,
+      "rarity": "legendary",
+      "effect": "prestige_power",
+      "text": "LEGENDARY: Search your deck for any Legendary card and play it free. PRESTIGE: You win ties this game. Max hand size +1. PRESTIGE.",
+      "flavor": "At the top, the rules don't apply. You make them.",
+      "keywords": [
+        "LEGENDARY_TUTOR",
+        "FREE_PLAY",
+        "PRESTIGE",
+        "WIN_TIES",
+        "HAND_SIZE_BOOST"
+      ],
+      "art_prompt": "penthouse throne room, legendary cards as physical artifacts floating in Metatron's Cube sacred geometry display cases, each radiating neon purple and gold prestige energy, absolute power room, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_prison_riot",
+      "set": "EXP3",
+      "type": "action",
+      "name": "Prison Riot",
+      "emoji": "\ud83c\udfed",
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "prison_riot",
+      "text": "YARD: All Dealers in play take 2 damage. Each player draws cards equal to damage dealt. COMMISSARY: Add a random Common Stash to each player's hand.",
+      "flavor": "Guards retreat. Yard erupts. Everyone eats.",
+      "keywords": [
+        "YARD",
+        "GLOBAL_DAMAGE",
+        "DRAW_ON_DAMAGE",
+        "COMMISSARY",
+        "GLOBAL_EFFECT"
+      ],
+      "art_prompt": "prison yard riot, inmates fighting guards, sacred geometry chaos \u2014 broken Metatron's Cube, Sri Yantra riot patterns, improvised weapons as sacred geometry, neon orange and red chaos energy, guard towers as geometric watchtowers, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_contraband_run",
+      "set": "EXP3",
+      "type": "action",
+      "name": "Contraband Run",
+      "emoji": "\ud83d\ude9a",
+      "cost": 1,
+      "rarity": "uncommon",
+      "effect": "contraband_run",
+      "text": "Search your deck for a CONTRABAND Stash, reveal it, put it into hand. It costs 0 to play this turn. CONTRABAND.",
+      "flavor": "Guard looks away. Package slides through. Business as usual.",
+      "keywords": [
+        "CONTRABAND_TUTOR",
+        "FREE_PLAY_TEMP",
+        "CONTRABAND"
+      ],
+      "art_prompt": "prison laundry truck, contraband packages hidden in laundry bags glowing with Seed of Life sacred geometry, guard tower searchlight as Metatron's Cube scanning pattern, neon orange smuggling energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_guard_payoff",
+      "set": "EXP3",
+      "type": "action",
+      "name": "Guard Payoff",
+      "emoji": "\ud83d\udcb0",
+      "cost": 2,
+      "rarity": "rare",
+      "effect": "guard_payoff",
+      "text": "Target Dealer gains GUARD: redirects all damage and effects targeting your other cards to itself. Costs 1 Heat per turn to maintain. GUARD.",
+      "flavor": "Everyone has a price. Even the screws.",
+      "keywords": [
+        "GUARD",
+        "REDIRECT_PROTECTION",
+        "MAINTENANCE_COST"
+      ],
+      "art_prompt": "prison guard accepting bribe, handshake through bars forming sacred geometry corruption pattern, Metatron's Cube bribe energy, neon gold and blue corruption energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_commissary_raid",
+      "set": "EXP3",
+      "type": "action",
+      "name": "Commissary Raid",
+      "emoji": "\ud83c\udfea",
+      "cost": 3,
+      "rarity": "legendary",
+      "effect": "commissary_raid",
+      "text": "LEGENDARY: Reveal top 10 cards of your deck. Put all Stash cards into play attached to your Dealers (free). Rest to bottom. COMMISSARY. PRESTIGE. YARD.",
+      "flavor": "Clean out the store. Stock the whole block.",
+      "keywords": [
+        "MASS_STASH_DEPLOY",
+        "COMMISSARY",
+        "PRESTIGE",
+        "YARD",
+        "DECK_MANIPULATION"
+      ],
+      "art_prompt": "prison commissary being raided by inmates, shelves emptied, products flying as sacred geometry Flower of Life patterns, ramen and coffee as sacred geometry currency, neon orange commissary fluorescence, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "a_yard_boss",
+      "set": "EXP3",
+      "type": "action",
+      "name": "Yard Boss",
+      "emoji": "\ud83d\udc51",
+      "cost": 4,
+      "rarity": "legendary",
+      "effect": "yard_boss",
+      "text": "LEGENDARY: Create a 5/5 Legendary Prison King token Dealer with CONTRABAND, YARD, and PRESTIGE. If you control Prison King: it gains +2/+2 and 'Cannot be destroyed.' PRESTIGE. YARD.",
+      "flavor": "The yard has a king. Long live the king.",
+      "keywords": [
+        "TOKEN_GENERATION",
+        "LEGENDARY_TOKEN",
+        "CONTRABAND",
+        "YARD",
+        "PRESTIGE",
+        "INDESTRUCTIBLE_SYNERGY"
+      ],
+      "art_prompt": "prison king on weight bench throne, crown of Metatron's Cube sacred geometry, inmate army kneeling in hexagonal formation, yard as sacred geometry kingdom, neon orange and gold prison royalty energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_basic",
+      "set": "SCE",
+      "type": "borough",
+      "name": "Basic Street",
+      "emoji": "\ud83c\udfd9\ufe0f",
+      "cost": 0,
+      "rarity": "common",
+      "heatGain": 1,
+      "text": "Tap: +1 Heat. Starts in play for both players. Every hustle starts on the block.",
+      "flavor": "Every hustle starts on the block.",
+      "keywords": [
+        "STARTER"
+      ],
+      "art_prompt": "generic NYC street corner at night, neon orange streetlights, hexagonal sacred geometry grid overlaid on the street pavement like an energy field, urban foundation energy, ordinary but essential, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_bronx",
+      "set": "SCE",
+      "type": "borough",
+      "name": "The Bronx",
+      "emoji": "\ud83d\udea8",
+      "cost": 0,
+      "rarity": "common",
+      "heatGain": 1,
+      "bonus": "bronx",
+      "text": "Tap: +1 Heat. BONUS: Heroin and Speed Stash give +1 extra ATK each.",
+      "flavor": "Demand never dies here.",
+      "keywords": [
+        "BRONX_BONUS"
+      ],
+      "art_prompt": "The Bronx NYC at night, elevated subway tracks, brick housing projects, neon green and orange sacred geometry hexagonal grid crackling with electricity through the streets, raw energy and danger, police siren light traces forming geometric patterns, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_brooklyn",
+      "set": "SCE",
+      "type": "borough",
+      "name": "Brooklyn",
+      "emoji": "\ud83c\udf3f",
+      "cost": 0,
+      "rarity": "common",
+      "heatGain": 1,
+      "bonus": "brooklyn",
+      "text": "Tap: +1 Heat. BONUS: Weed and Ludes Stash cost 0 Heat here.",
+      "flavor": "Local supply, local discount.",
+      "keywords": [
+        "BROOKLYN_BONUS"
+      ],
+      "art_prompt": "Brooklyn NYC at night, brownstone buildings, Brooklyn Bridge in background, neon green cannabis leaf energy integrated with Flower of Life sacred geometry floating above the streets, peaceful but powerful, green neon glow, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_manhattan",
+      "set": "SCE",
+      "type": "borough",
+      "name": "Manhattan",
+      "emoji": "\ud83c\udfd9\ufe0f",
+      "cost": 0,
+      "rarity": "uncommon",
+      "heatGain": 2,
+      "bonus": "manhattan",
+      "text": "Tap: +2 Heat. HIGH RISK: Cop Actions against you deal +1 extra damage.",
+      "flavor": "Top dollar. Top risk.",
+      "keywords": [
+        "HIGH_HEAT",
+        "MANHATTAN_RISK"
+      ],
+      "art_prompt": "Manhattan NYC skyline at night from street level, skyscrapers piercing dark sky, neon gold and blue Metatron's Cube sacred geometry superimposed over the entire skyline, premium and expensive energy, wealth and danger combined, the city as sacred geometry, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_queens",
+      "set": "SCE",
+      "type": "borough",
+      "name": "Queens",
+      "emoji": "\ud83c\udccf",
+      "cost": 0,
+      "rarity": "uncommon",
+      "heatGain": 1,
+      "bonus": "queens",
+      "text": "Tap: +1 Heat. When played: draw 1 card. Information is the real product.",
+      "flavor": "Information is the real product.",
+      "keywords": [
+        "DRAW_ON_PLAY"
+      ],
+      "art_prompt": "Queens NYC at night, diverse street market, neon teal sacred geometry playing card / Sri Yantra pattern hovering above the market like a cosmic dealer's table, wild card energy, anything-goes market energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_harlem",
+      "set": "SCE",
+      "type": "borough",
+      "name": "Harlem",
+      "emoji": "\ud83d\udc80",
+      "cost": 0,
+      "rarity": "rare",
+      "heatGain": 1,
+      "bonus": "harlem",
+      "text": "Tap: +1 Heat. ONCE PER GAME: Restore 5 HP to your Active Dealer.",
+      "flavor": "Loan Shark HQ. No mercy.",
+      "keywords": [
+        "ONCE_PER_GAME_HEAL"
+      ],
+      "art_prompt": "Harlem NYC at night, historic jazz club buildings, neon gold and amber glow, enormous skull formed from Metatron's Cube sacred geometry floating above the streets like a guardian spirit, powerful and ancestral energy, debt and legacy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_staten",
+      "set": "SCE",
+      "type": "borough",
+      "name": "Staten Island",
+      "emoji": "\ud83d\udee1\ufe0f",
+      "cost": 0,
+      "rarity": "common",
+      "heatGain": 1,
+      "bonus": "staten",
+      "text": "Tap: +1 Heat. PASSIVE: Your Active Dealer takes 1 less damage from all attacks.",
+      "flavor": "Nobody looks here.",
+      "keywords": [
+        "DAMAGE_REDUCTION"
+      ],
+      "art_prompt": "Staten Island NYC waterfront at night, peaceful yet isolated, ferry lights reflecting on dark water, neon blue protective sacred geometry shield pattern (Sri Yantra) hovering over the island like a dome of protection, safe zone energy, calm before the storm, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_long_island",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Long Island",
+      "emoji": "\ud83c\udfd8\ufe0f",
+      "cost": 0,
+      "rarity": "common",
+      "heatGain": 1,
+      "bonus": "long_island",
+      "text": "Tap: +1 Heat. SUBURBAN: Your Dealers have +1 HP. Stash cards cost 1 less (min 0).",
+      "flavor": "Quiet neighborhoods. Loud money.",
+      "keywords": [
+        "SUBURBAN_HP_BOOST",
+        "STASH_DISCOUNT"
+      ],
+      "art_prompt": "Long Island suburbia at night, manicured lawns hiding sacred geometry grow operations in basements, Flower of Life sprinkler systems, Metatron's Cube pool designs, neon green and gold suburban stealth wealth, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_westchester",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Westchester",
+      "emoji": "\ud83c\udff0",
+      "cost": 0,
+      "rarity": "uncommon",
+      "heatGain": 2,
+      "bonus": "westchester",
+      "text": "Tap: +2 Heat. ELITE: Your Legendary cards cost 1 less Heat. Opponents cannot play Common Boroughs while you control this.",
+      "flavor": "Old money. New product. Same game.",
+      "keywords": [
+        "ELITE_LEGENDARY_DISCOUNT",
+        "BLOCK_COMMON_BOROUGHS"
+      ],
+      "art_prompt": "Westchester mansions at night, gated communities with Metatron's Cube security systems, hedge mazes as sacred geometry Flower of Life, neon gold old money energy, private helipads as geometric landing zones, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_newark",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Newark",
+      "emoji": "\u2708\ufe0f",
+      "cost": 0,
+      "rarity": "common",
+      "heatGain": 1,
+      "bonus": "newark",
+      "text": "Tap: +1 Heat. PORT: When you play a Stash, gain 1 Heat. CARTEL: Import Stash from collection.",
+      "flavor": "Port of Entry. Gateway to the world.",
+      "keywords": [
+        "PORT_HEAT_ON_STASH",
+        "CARTEL_IMPORT"
+      ],
+      "art_prompt": "Newark port at night, shipping containers glowing with sacred geometry logistics codes, Flower of Life crane patterns, Metatron's Cube shipping manifests, neon teal and orange global trade energy, airport lights as sacred geometry approach paths, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_jersey_city",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Jersey City",
+      "emoji": "\ud83c\udfd9\ufe0f",
+      "cost": 0,
+      "rarity": "uncommon",
+      "heatGain": 2,
+      "bonus": "jersey_city",
+      "text": "Tap: +2 Heat. GOLDMAN: Your Action cards cost 1 less Heat. Wall Street adjacent.",
+      "flavor": "Goldman Sachs towers. Laundromats in the basement.",
+      "keywords": [
+        "ACTION_DISCOUNT",
+        "WALL_STREET_ADJACENT"
+      ],
+      "art_prompt": "Jersey City waterfront at night, Goldman Sachs tower glowing with Metatron's Cube sacred geometry, financial district reflection in Hudson River as Flower of Life, neon gold and blue high finance energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_yellowstone",
+      "set": "CTC",
+      "type": "borough",
+      "name": "The Meadowlands",
+      "emoji": "\ud83c\udfdf\ufe0f",
+      "cost": 0,
+      "rarity": "common",
+      "heatGain": 1,
+      "bonus": "meadowlands",
+      "text": "Tap: +1 Heat. ARENA: When your Dealer KOs another, gain 2 Heat and draw 1 card.",
+      "flavor": "Giants stadium. Betting windows. Cash flows.",
+      "keywords": [
+        "ARENA_KO_REWARD"
+      ],
+      "art_prompt": "Meadowslands stadium at night, football field as sacred geometry grid, betting windows glowing with Metatron's Cube odds boards, neon green and gold sports betting energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_atlantic_city",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Atlantic City",
+      "emoji": "\ud83c\udfb0",
+      "cost": 0,
+      "rarity": "rare",
+      "heatGain": 1,
+      "bonus": "atlantic_city",
+      "text": "Tap: +1 Heat. CASINO: Once per turn, pay 2 Heat: roll die \u2014 1-2: lose 1 HP, 3-4: gain 2 Heat, 5-6: draw 2 cards. High roller.",
+      "flavor": "The house always wins. Unless you own the house.",
+      "keywords": [
+        "CASINO_GAMBLE",
+        "HIGH_ROLLER"
+      ],
+      "art_prompt": "Atlantic City boardwalk at night, casinos as sacred geometry temples, slot machines as Flower of Life reels, Metatron's Cube roulette wheels, neon pink and gold gambling energy, ocean as dark geometric void, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_philadelphia",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Philadelphia",
+      "emoji": "\ud83d\udd14",
+      "cost": 0,
+      "rarity": "uncommon",
+      "heatGain": 1,
+      "bonus": "philadelphia",
+      "text": "Tap: +1 Heat. BROTHERLY: Your Dealers gain +1 ATK when defending. CHEESESTEAK: Stash heal effects doubled.",
+      "flavor": "Liberty Bell rings. Product moves. Brothers eat.",
+      "keywords": [
+        "DEFENSIVE_ATK_BOOST",
+        "HEAL_DOUBLER"
+      ],
+      "art_prompt": "Philadelphia at night, Liberty Bell glowing with Metatron's Cube sacred geometry crack, cheesesteak shops as Flower of Life neon signs, brotherly love as sacred geometry connection lines, neon green and orange Philly energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_baltimore",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Baltimore",
+      "emoji": "\ud83e\udd9e",
+      "cost": 0,
+      "rarity": "common",
+      "heatGain": 1,
+      "bonus": "baltimore",
+      "text": "Tap: +1 Heat. WIRE: Look at opponent's hand when you play a Borough. CORNER: Your Dealers have +1 DEF.",
+      "flavor": "Omar comin'. The wire taps. Corners hold.",
+      "keywords": [
+        "WIRE_SCOUT",
+        "CORNER_DEF_BOOST"
+      ],
+      "art_prompt": "Baltimore at night, row houses with sacred geometry window patterns, wire taps as Metatron's Cube surveillance web, corners as hexagonal territory markers, neon blue and orange Wire energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_dc",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Washington DC",
+      "emoji": "\ud83c\udfdb\ufe0f",
+      "cost": 0,
+      "rarity": "rare",
+      "heatGain": 2,
+      "bonus": "dc",
+      "text": "Tap: +2 Heat. LOBBY: Your Federal cards cost 1 less. IMMUNITY: Your Dealers cannot be destroyed by Actions. PRESTIGE.",
+      "flavor": "Laws written by lobbyists. Enforced by friends.",
+      "keywords": [
+        "FEDERAL_DISCOUNT",
+        "ACTION_INDESTRUCTIBLE",
+        "PRESTIGE"
+      ],
+      "art_prompt": "DC at night, Capitol dome as Metatron's Cube sacred geometry, K Street lobbyists as Flower of Life influence peddlers, monuments as Sri Yantra power nodes, neon purple and gold political power energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_miami",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Miami",
+      "emoji": "\ud83c\udf34",
+      "cost": 0,
+      "rarity": "rare",
+      "heatGain": 2,
+      "bonus": "miami",
+      "text": "Tap: +2 Heat. VICE: Your Stash cards have +1 ATK. CARTEL: When you play a Stash, search deck for another Stash and reveal it. PRESTIGE.",
+      "flavor": "Scarface dreams. Ocean drive reality. Product flows.",
+      "keywords": [
+        "STASH_ATK_BOOST",
+        "CARTEL_STASH_TUTOR",
+        "PRESTIGE"
+      ],
+      "art_prompt": "Miami at night, palm trees as sacred geometry Fibonacci spirals, art deco buildings as Metatron's Cube facades, ocean as Flower of Life waves, neon pink and teal Vice City energy, speedboats as geometric supply lines, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_la",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Los Angeles",
+      "emoji": "\ud83c\udf1f",
+      "cost": 0,
+      "rarity": "rare",
+      "heatGain": 2,
+      "bonus": "la",
+      "text": "Tap: +2 Heat. HOLLYWOOD: Your Legendary cards have 'When played: draw 2 cards.' PORT: Stash cost 0 Heat. PRESTIGE.",
+      "flavor": "Dreams manufactured. Nightmares sold. Port of LA moves weight.",
+      "keywords": [
+        "LEGENDARY_DRAW",
+        "STASH_FREE",
+        "PRESTIGE"
+      ],
+      "art_prompt": "LA at night, Hollywood sign as sacred geometry Metatron's Cube, film studios as Flower of Life sound stages, Port of LA as Sri Yantra shipping lanes, neon gold and purple celebrity energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_chicago",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Chicago",
+      "emoji": "\ud83c\udf2c\ufe0f",
+      "cost": 0,
+      "rarity": "uncommon",
+      "heatGain": 1,
+      "bonus": "chicago",
+      "text": "Tap: +1 Heat. WINDY: Opponent's Heat generation reduced by 1 (min 1). AL CAPONE: Your Dealers have +1 DEF. Syndicate hub.",
+      "flavor": "Wind blows. Product moves. Capone's ghost watches.",
+      "keywords": [
+        "HEAT_SUPPRESSION",
+        "DEF_BOOST",
+        "SYNDICATE_HUB"
+      ],
+      "art_prompt": "Chicago at night, wind as sacred geometry vortex patterns, Capone's ghost as Metatron's Cube specter, L train as Flower of Life transit grid, neon blue and orange windy city energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_detroit",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Detroit",
+      "emoji": "\ud83d\ude97",
+      "cost": 0,
+      "rarity": "common",
+      "heatGain": 1,
+      "bonus": "detroit",
+      "text": "Tap: +1 Heat. MOTOR: Your Dealers with HASTE gain +2 ATK. 8 MILE: When you play a Dealer, it gains HASTE.",
+      "flavor": "Motown muscle. Assembly line efficiency. Eminem energy.",
+      "keywords": [
+        "HASTE_ATK_BOOST",
+        "GRANT_HASTE_ON_PLAY"
+      ],
+      "art_prompt": "Detroit at night, factories as sacred geometry assembly lines, 8 Mile Road as Metatron's Cube boundary, cars as Flower of Life production units, neon orange and blue motor city energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_atlanta",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Atlanta",
+      "emoji": "\ud83c\udf51",
+      "cost": 0,
+      "rarity": "uncommon",
+      "heatGain": 1,
+      "bonus": "atlanta",
+      "text": "Tap: +1 Heat. TRAP: Your Stash cards cost 1 less. AIRPORT: Once per game, search deck for any card. HUB.",
+      "flavor": "Trap music. Trap houses. World's busiest airport moves everything.",
+      "keywords": [
+        "TRAP_STASH_DISCOUNT",
+        "AIRPORT_TUTOR",
+        "HUB"
+      ],
+      "art_prompt": "Atlanta at night, trap houses as sacred geometry Flower of Life patterns, airport as Metatron's Cube global hub, peach as Sri Yantra fruit, neon orange and purple trap energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_houston",
+      "set": "CTC",
+      "type": "borough",
+      "name": "Houston",
+      "emoji": "\ud83d\ude80",
+      "cost": 0,
+      "rarity": "uncommon",
+      "heatGain": 1,
+      "bonus": "houston",
+      "text": "Tap: +1 Heat. SPACE: Your Legendary cards cost 2 less. PORT: Stash draw effects doubled. ENERGY CAPITAL.",
+      "flavor": "NASA mission control. Oil money. Port moves the world.",
+      "keywords": [
+        "LEGENDARY_MAJOR_DISCOUNT",
+        "STASH_DRAW_DOUBLER",
+        "ENERGY_CAPITAL"
+      ],
+      "art_prompt": "Houston at night, NASA mission control as sacred geometry Flower of Life screens, oil refineries as Metatron's Cube industrial cathedrals, port as Sri Yantra shipping lanes, neon orange and gold space city energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_prison_yard",
+      "set": "EXP3",
+      "type": "borough",
+      "name": "Prison Yard",
+      "emoji": "\ud83c\udfed",
+      "cost": 0,
+      "rarity": "common",
+      "heatGain": 1,
+      "bonus": "prison_yard",
+      "text": "YARD. Tap: +1 Heat. Your CONTRABAND Stash costs 0. COMMISSARY: At start of turn, add random Common Stash to hand.",
+      "flavor": "Concrete rectangle. Real economy. Survival of fittest.",
+      "keywords": [
+        "YARD",
+        "CONTRABAND_FREE",
+        "COMMISSARY"
+      ],
+      "art_prompt": "prison yard at day, weight pile as sacred geometry Metatron's Cube, basketball court as Flower of Life grid, guard towers as Sri Yantra watchtowers, inmate economy as glowing Seed of Life transactions, neon orange institutional energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_solitary",
+      "set": "EXP3",
+      "type": "borough",
+      "name": "Solitary Confinement",
+      "emoji": "\ud83d\udeaa",
+      "cost": 0,
+      "rarity": "rare",
+      "heatGain": 0,
+      "bonus": "solitary",
+      "text": "YARD. NO HEAT. ISOLATION: Your Dealer here cannot attack or be attacked. CONTRABAND: Stash attached here cannot be removed. PRESTIGE.",
+      "flavor": "The hole. 23 hours. 1 hour. Time thinks for you.",
+      "keywords": [
+        "NO_HEAT",
+        "ISOLATION",
+        "CONTRABAND_PROTECTION",
+        "PRESTIGE"
+      ],
+      "art_prompt": "solitary confinement cell, single concrete bed, light slot as sacred geometry Metatron's Cube, prisoner meditating with Flower of Life mind palace, time as geometric progression, neon white and grey isolation energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_death_row",
+      "set": "EXP3",
+      "type": "borough",
+      "name": "Death Row",
+      "emoji": "\u26a1",
+      "cost": 0,
+      "rarity": "legendary",
+      "heatGain": 3,
+      "bonus": "death_row",
+      "text": "YARD. Tap: +3 Heat. FINAL: Dealers here have +3 ATK and 'When this KOs: you win the game.' EXECUTION: At end of your turn, this Dealer takes 3 damage. PRESTIGE.",
+      "flavor": "Last walk. Last meal. Last statement. Legend forever.",
+      "keywords": [
+        "HIGH_HEAT",
+        "FINAL_WIN_CON",
+        "EXECUTION_DAMAGE",
+        "PRESTIGE"
+      ],
+      "art_prompt": "death row chamber, electric chair as Metatron's Cube sacred geometry throne, final meal as Flower of Life offering, witness window as Sri Yantra observation, neon red and gold final judgment energy, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    },
+    {
+      "id": "b_commissary",
+      "set": "EXP3",
+      "type": "borough",
+      "name": "Commissary",
+      "emoji": "\ud83c\udfea",
+      "cost": 0,
+      "rarity": "uncommon",
+      "heatGain": 1,
+      "bonus": "commissary_boro",
+      "text": "YARD. Tap: +1 Heat. COMMISSARY: Once per turn, pay 1 Heat: reveal top 3 of deck, put a Stash into hand. Ramen currency accepted.",
+      "flavor": "Ramen, coffee, mackerel. Real prison money.",
+      "keywords": [
+        "COMMISSARY_SHOP",
+        "STASH_TUTOR",
+        "RAMEN_CURRENCY"
+      ],
+      "art_prompt": "prison commissary, shelves as sacred geometry Flower of Life grid, ramen packets as Metatron's Cube currency, coffee as Sri Yantra energy, inmates trading in hexagonal queues, neon orange fluorescent commissary glow, dark background, sacred geometry overlay, neon glow lighting, NYC underground aesthetic, cinematic card game illustration, portrait orientation, no text, no watermark, ultra-detailed, 4k"
+    }
+  ]
+}
