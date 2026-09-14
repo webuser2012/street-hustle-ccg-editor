@@ -7,21 +7,15 @@ Exit code 0 on success, 1 on any failure. Designed to run in CI and locally
 Schema is TYPE-DEPENDENT. All cards share common fields; each type adds its
 own stat block (verified against the canonical v9.6 master DB):
 
-  Common (every card): id, name, type, rarity, faction?, set, cost, keywords,
+  Common (every card): id, name, type, rarity, set, cost, keywords,
                        emoji, flavor, text, art_prompt
-  dealer :  + faction, + int atk, def, hp          (26 cards)
-  stash  :  + atkBonus (int), + drug (str)         (29 cards)
-  action :  + effect (str)                         (35 cards)
-  borough:  + heatGain (int or 0)                  (26 cards)
+  dealer :  + faction (str), + int atk, def, hp   (26 cards)
+  stash  :  + atkBonus (int), + drug (str)        (29 cards)
+  action :  + effect (str)                        (35 cards)
+  borough:  + heatGain (int or 0)                 (26 cards)
 
-Checks performed:
-  1. Every data/*.json is valid JSON.
-  2. Master DB declares total_cards = 116 and contains exactly that many.
-  3. Every card has the required common fields and a valid type/rarity enum.
-  4. Type-appropriate stat fields are present/typed correctly.
-  5. Per-type DBs sum to the master total (26 + 29 + 35 + 26 = 116) and their
-     card names match the master's type assignment.
-  6. Card IDs and names are unique across the master set.
+The validation rules live in `validate_cards()` / `validate_data_dir()` so the
+editor app and test suite can reuse them without going through the CLI.
 
 Usage:
     python3 scripts/validate_db.py [--data-dir PATH]
@@ -63,7 +57,7 @@ def load_json(path: pathlib.Path):
         return json.load(fh)
 
 
-def validate_card(card: dict, errors: list, card_index: int) -> None:
+def _validate_card(card: dict, errors: list, card_index: int) -> None:
     for field in COMMON_FIELDS:
         if field not in card:
             errors.append(f"[{card_index}] missing common field: {field}")
@@ -94,50 +88,81 @@ def validate_card(card: dict, errors: list, card_index: int) -> None:
             )
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data-dir", default="data", help="Path to data dir")
-    args = parser.parse_args()
-    data_dir = pathlib.Path(args.data_dir)
+def describe_card_types(cards):
+    """Return dict of type -> set of card names across a list of cards."""
+    out = {}
+    for card in cards:
+        if isinstance(card, dict):
+            out.setdefault(card.get("type"), set()).add(card.get("name"))
+    return out
+
+
+def validate_cards(cards, declared_total=EXPECTED_TOTAL):
+    """Validate an iterable of card dicts (the master set).
+
+    Returns a list of error strings (empty == valid). Pure and importable so
+    the editor and tests can reuse it without the CLI/filesystem.
+    """
     errors = []
+    cards = list(cards)
 
-    master_path = data_dir / "STREETHUSTLE_MASTER_DB_v9.6.json"
-    if not master_path.exists():
-        print(f"FAIL: master DB not found at {master_path}")
-        return 1
-
-    try:
-        master = load_json(master_path)
-    except json.JSONDecodeError as exc:
-        print(f"FAIL: {master_path} is not valid JSON: {exc}")
-        return 1
-
-    cards = master.get("cards", [])
-    declared = master.get("total_cards")
-    if declared != EXPECTED_TOTAL:
-        errors.append(f"declared total_cards = {declared}, expected {EXPECTED_TOTAL}")
+    if declared_total != EXPECTED_TOTAL:
+        errors.append(
+            f"declared total_cards = {declared_total}, expected {EXPECTED_TOTAL}"
+        )
     if len(cards) != EXPECTED_TOTAL:
-        errors.append(f"master DB has {len(cards)} cards, expected {EXPECTED_TOTAL}")
+        errors.append(
+            f"master DB has {len(cards)} cards, expected {EXPECTED_TOTAL}"
+        )
 
     seen_ids, seen_names = set(), set()
     for idx, card in enumerate(cards):
         if not isinstance(card, dict):
             errors.append(f"[{idx}] card is not an object")
             continue
-        validate_card(card, errors, idx)
+        _validate_card(card, errors, idx)
         cid = card.get("id")
         if cid in seen_ids:
             errors.append(f"duplicate card id: {cid}")
-        if cid:
+        elif cid:
             seen_ids.add(cid)
         name = card.get("name")
         if name in seen_names:
             errors.append(f"duplicate card name: {name}")
-        if name:
+        elif name:
             seen_names.add(name)
 
-    # Per-type DBs: validate JSON, count, cross-check names against master.
-    type_tally = {}
+    return errors
+
+
+def validate_data_dir(data_dir):
+    """Validate everything under a data directory.
+
+    Returns a list of error strings (empty == valid). Checks JSON validity,
+    master counts/schema, per-type counts, and that per-type memberships
+    match the master's type assignment.
+    """
+    data_dir = pathlib.Path(data_dir)
+    errors = []
+
+    master_path = data_dir / "STREETHUSTLE_MASTER_DB_v9.6.json"
+    if not master_path.exists():
+        errors.append(f"FAIL: master DB not found at {master_path}")
+        return errors
+
+    try:
+        master = load_json(master_path)
+    except json.JSONDecodeError as exc:
+        errors.append(f"FAIL: {master_path} is not valid JSON: {exc}")
+        return errors
+
+    cards = master.get("cards", [])
+    errors.extend(
+        validate_cards(cards, declared_total=master.get("total_cards"))
+    )
+
+    master_by_type = describe_card_types(cards)
+
     for fname, expected in PER_TYPE_FILES.items():
         fpath = data_dir / f"STREETHUSTLE_{fname}_DB_v9.6.json"
         if not fpath.exists():
@@ -149,32 +174,39 @@ def main() -> int:
             errors.append(f"{fname} not valid JSON: {exc}")
             continue
         n = len(db.get("cards", db))
-        type_tally[fname] = n
         if n != expected:
             errors.append(f"{fname} has {n} cards, expected {expected}")
 
         tname = PER_TYPE_NAME[fname]
-        subset = {c.get("name") for c in db.get("cards", db)}
-        master_names = {
-            c["name"] for c in cards
-            if c.get("type") == tname and isinstance(c, dict)
-        }
+        subset = {card.get("name") for card in db.get("cards", db)}
+        master_names = master_by_type.get(tname, set())
         if subset - master_names:
             errors.append(
                 f"{fname} has names not typed '{tname}' in master: "
                 f"{sorted(subset - master_names)[:5]}"
             )
 
+    return errors
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--data-dir", default="data", help="Path to data dir")
+    args = parser.parse_args()
+
+    errors = validate_data_dir(args.data_dir)
     if errors:
         print(f"FAIL: {len(errors)} validation error(s):")
         for e in errors:
             print(f"  - {e}")
         return 1
 
-    print(f"OK: {len(cards)} cards validated. Type counts: "
-          f"Dealer {type_tally.get('DEALERS')}, Stash {type_tally.get('STASH')}, "
-          f"Action {type_tally.get('ACTIONS')}, Borough {type_tally.get('BOROUGHS')} "
-          f"(sum {sum(type_tally.values())}). Schema, counts, uniqueness all pass.")
+    print(
+        f"OK: {EXPECTED_TOTAL} cards validated. Type counts: "
+        f"Dealer {PER_TYPE_FILES['DEALERS']}, Stash {PER_TYPE_FILES['STASH']}, "
+        f"Action {PER_TYPE_FILES['ACTIONS']}, Borough {PER_TYPE_FILES['BOROUGHS']} "
+        f"(sum {sum(PER_TYPE_FILES.values())}). All pass."
+    )
     return 0
 
 

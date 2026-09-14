@@ -16,5 +16,11 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install test deps
+        run: pip install pytest
+
       - name: Validate card data + schema
         run: python3 scripts/validate_db.py --data-dir data
+
+      - name: Run unit tests
+        run: python3 -m pytest tests/ -q
