@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Street Hustle CCG — Card Editor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/card.css">
+  <link rel="stylesheet" href="styles/editor.css">
+</head>
+<body>
+  <div class="editor-shell">
+
+    <header class="editor-header">
+      <div class="brand">
+        Street Hustle
+        <small>CCG · Card Editor</small>
+      </div>
+      <div class="header-actions">
+        <button class="btn ghost" type="button" disabled>Import DB</button>
+        <button class="btn ghost" type="button" disabled>Export</button>
+        <button class="btn" type="button" disabled>New Card</button>
+      </div>
+    </header>
+
+    <div class="editor-body">
+
+      <!-- LEFT: live card canvas ------------------------------------- -->
+      <section class="canvas-pane">
+        <div class="pane-label">Canvas</div>
+        <div class="editor-canvas" id="card-canvas">
+          <div class="canvas-stage" id="canvas-stage">
+
+            <!-- Empty-canvas state (issue #3 deliverable) -->
+            <div class="canvas-placeholder" id="canvas-placeholder">
+              <div class="ph-icon">🃏</div>
+              <div class="ph-title">No Card Loaded</div>
+              <div class="ph-hint">
+                Card data loads from the master DB<br>
+                and the editor panel — next up
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="canvas-toolbar">
+          <button class="btn ghost" type="button" id="zoom-out">−</button>
+          <span id="zoom-label">100%</span>
+          <button class="btn ghost" type="button" id="zoom-in">+</button>
+          <span>·</span>
+          <span id="canvas-mode">Screen view</span>
+        </div>
+      </section>
+
+      <!-- RIGHT: property editor ------------------------------------- -->
+      <aside class="property-pane">
+        <div class="pane-label">Properties</div>
+        <div class="tabs" role="tablist">
+          <button class="tab" role="tab" aria-selected="true" data-tab="basic">Basic</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="artwork">Artwork</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="text">Text</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="colors">Colors</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="keywords">Keywords</button>
+          <button class="tab" role="tab" aria-selected="false" data-tab="export">Export</button>
+        </div>
+
+        <div class="tab-panels">
+          <section class="tab-panel" data-panel="basic">
+            <p class="panel-note">Identity &amp; stats — fields activate once the master DB is loaded.</p>
+            <div class="field-grid">
+              <div class="field"><label for="f-id">Card ID</label><input id="f-id" disabled placeholder="dealer_sce_…"></div>
+              <div class="field"><label for="f-name">Name</label><input id="f-name" disabled placeholder="Card name"></div>
+              <div class="field">
+                <label for="f-type">Type</label>
+                <select id="f-type" disabled>
+                  <option>Dealer</option><option>Stash</option><option>Action</option><option>Borough</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-rarity">Rarity</label>
+                <select id="f-rarity" disabled>
+                  <option>Common</option><option>Uncommon</option><option>Rare</option><option>Legendary</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <section class="tab-panel" data-panel="artwork" hidden>
+            <p class="panel-note">Drag &amp; drop artwork here — pan/zoom/crop lands with the art uploader.</p>
+          </section>
+
+          <section class="tab-panel" data-panel="text" hidden>
+            <p class="panel-note">Per-type text fields (name, stats, ability, flavor).</p>
+          </section>
+
+          <section class="tab-panel" data-panel="colors" hidden>
+            <p class="panel-note">Design tokens above are live on this page — per-card overrides come next.</p>
+          </section>
+
+          <section class="tab-panel" data-panel="keywords" hidden>
+            <p class="panel-note">Keyword chips from the 22-keyword pool.</p>
+          </section>
+
+          <section class="tab-panel" data-panel="export" hidden>
+            <p class="panel-note">JSON / HTML print sheet / PNG / PDF export.</p>
+          </section>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="editor-status">
+      <span><span class="status-dot"></span>Scaffold online</span>
+      <span id="status-cards">0 cards loaded</span>
+      <span id="status-type">Type: —</span>
+      <span id="status-rarity">Rarity: —</span>
+    </footer>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

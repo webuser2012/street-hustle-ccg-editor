@@ -4,10 +4,11 @@
 
 A web-based card editor for **Street Hustle CCG** (collectible card game). Build print-ready cards and JSON game data for the engine.
 
-> **Current status:** Repo seeded with canonical game data (116 cards v9.6) and the build instructions. The editor app itself is a work-in-progress — see the [issue tracker](https://github.com/webuser2012/street-hustle-ccg-editor/issues).
+> **Current status:** Repo seeded with canonical game data (116 cards v9.6), the build instructions, and the editor shell scaffold (`app/`). Editor features are a work-in-progress — see the [issue tracker](https://github.com/webuser2012/street-hustle-ccg-editor/issues).
 
 ## What this repo is
 
+- **`app/`** — the editor shell: design-system tokens, the card styles ported from the print template, and a runnable empty canvas. Static, no build step.
 - **`data/`** — Single source of truth: the full 116-card database (`STREETHUSTLE_MASTER_DB_v9.6.json`) plus per-type DBs (Dealer / Stash / Action / Borough). Card totals are validated in CI.
 - **`docs/BUILD_INSTRUCTIONS.md`** — Complete spec for building the card editor (features, design system, schema).
 - **`docs/webpages/`** — Reference implementation files: the current print template (`cards.html`) and marketing design system (`index.html`).
@@ -22,13 +23,16 @@ A web-based card editor for **Street Hustle CCG** (collectible card game). Build
 - **Export print-ready cards** (PNG/PDF) and **JSON data** for the game engine
 - **Load/save projects** from the master DB (116 cards v9.6)
 
-## Quick start (once the app exists)
+## Quick start
+
+The editor is a build-free static app — no `npm install` required.
 
 ```bash
-npm install
-npm run dev        # local dev server
-npm run validate   # validate the card data + schema
-npm test           # run the test suite
+scripts/dev.sh            # serves ./app at http://127.0.0.1:5173
+PORT=8080 scripts/dev.sh  # custom port
+
+python3 scripts/validate_db.py --data-dir data   # validate card data + schema
+python3 -m pytest tests/ -q                      # run the test suite
 ```
 
 ## Data schema (card object)
