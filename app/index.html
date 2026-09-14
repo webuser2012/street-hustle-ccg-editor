@@ -21,6 +21,7 @@
         Street Hustle
         <small>CCG · Card Editor</small>
       </div>
+      <div class="db-summary" id="db-summary">Loading master DB…</div>
       <div class="header-actions">
         <button class="btn ghost" type="button" disabled>Import DB</button>
         <button class="btn ghost" type="button" disabled>Export</button>
@@ -28,24 +29,47 @@
       </div>
     </header>
 
+    <div class="validation-banner" id="validation-banner" hidden></div>
+
     <div class="editor-body">
 
-      <!-- LEFT: live card canvas ------------------------------------- -->
+      <!-- LEFT: card library ------------------------------------------ -->
+      <nav class="library-pane">
+        <div class="pane-label">Library</div>
+        <div class="library-controls">
+          <input type="search" id="library-search" placeholder="Search name, id, keyword…" aria-label="Search cards">
+          <div class="library-selects">
+            <select id="filter-type" aria-label="Filter by type">
+              <option value="all">All types</option>
+              <option value="dealer">Dealer</option>
+              <option value="stash">Stash</option>
+              <option value="action">Action</option>
+              <option value="borough">Borough</option>
+            </select>
+            <select id="filter-rarity" aria-label="Filter by rarity">
+              <option value="all">All rarities</option>
+              <option value="common">Common</option>
+              <option value="uncommon">Uncommon</option>
+              <option value="rare">Rare</option>
+              <option value="legendary">Legendary</option>
+            </select>
+          </div>
+        </div>
+        <div class="library-list" id="library-list"></div>
+      </nav>
+
+      <!-- CENTER: live card canvas ------------------------------------ -->
       <section class="canvas-pane">
         <div class="pane-label">Canvas</div>
         <div class="editor-canvas" id="card-canvas">
           <div class="canvas-stage" id="canvas-stage">
+            <div class="canvas-card" id="canvas-card"></div>
 
-            <!-- Empty-canvas state (issue #3 deliverable) -->
-            <div class="canvas-placeholder" id="canvas-placeholder">
+            <div class="canvas-placeholder" id="canvas-placeholder" hidden>
               <div class="ph-icon">🃏</div>
               <div class="ph-title">No Card Loaded</div>
-              <div class="ph-hint">
-                Card data loads from the master DB<br>
-                and the editor panel — next up
-              </div>
+              <div class="ph-hint">Pick a card from the library</div>
             </div>
-
           </div>
         </div>
         <div class="canvas-toolbar">
@@ -57,7 +81,7 @@
         </div>
       </section>
 
-      <!-- RIGHT: property editor ------------------------------------- -->
+      <!-- RIGHT: property editor -------------------------------------- -->
       <aside class="property-pane">
         <div class="pane-label">Properties</div>
         <div class="tabs" role="tablist">
@@ -71,43 +95,41 @@
 
         <div class="tab-panels">
           <section class="tab-panel" data-panel="basic">
-            <p class="panel-note">Identity &amp; stats — fields activate once the master DB is loaded.</p>
+            <p class="panel-note">Values load from the master DB. Editing arrives with the artwork / theming / export issues (#5–#7).</p>
             <div class="field-grid">
-              <div class="field"><label for="f-id">Card ID</label><input id="f-id" disabled placeholder="dealer_sce_…"></div>
-              <div class="field"><label for="f-name">Name</label><input id="f-name" disabled placeholder="Card name"></div>
-              <div class="field">
-                <label for="f-type">Type</label>
-                <select id="f-type" disabled>
-                  <option>Dealer</option><option>Stash</option><option>Action</option><option>Borough</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="f-rarity">Rarity</label>
-                <select id="f-rarity" disabled>
-                  <option>Common</option><option>Uncommon</option><option>Rare</option><option>Legendary</option>
-                </select>
-              </div>
+              <div class="field"><label for="f-id">Card ID</label><input id="f-id" readonly placeholder="—"></div>
+              <div class="field"><label for="f-name">Name</label><input id="f-name" readonly placeholder="—"></div>
+              <div class="field"><label for="f-set">Set</label><input id="f-set" readonly placeholder="—"></div>
+              <div class="field"><label for="f-type">Type</label><input id="f-type" readonly placeholder="—"></div>
+              <div class="field"><label for="f-rarity">Rarity</label><input id="f-rarity" readonly placeholder="—"></div>
+              <div class="field"><label for="f-faction">Faction</label><input id="f-faction" readonly placeholder="—"></div>
+              <div class="field"><label for="f-cost">Heat cost</label><input id="f-cost" readonly placeholder="—"></div>
             </div>
           </section>
 
           <section class="tab-panel" data-panel="artwork" hidden>
-            <p class="panel-note">Drag &amp; drop artwork here — pan/zoom/crop lands with the art uploader.</p>
+            <p class="panel-note">Drag &amp; drop artwork here — arrives with #5.</p>
           </section>
 
           <section class="tab-panel" data-panel="text" hidden>
-            <p class="panel-note">Per-type text fields (name, stats, ability, flavor).</p>
+            <div class="field-grid">
+              <div class="field"><label for="f-text">Ability text</label><textarea id="f-text" rows="5" readonly></textarea></div>
+              <div class="field"><label for="f-flavor">Flavor text</label><textarea id="f-flavor" rows="3" readonly></textarea></div>
+            </div>
           </section>
 
           <section class="tab-panel" data-panel="colors" hidden>
-            <p class="panel-note">Design tokens above are live on this page — per-card overrides come next.</p>
+            <p class="panel-note">Per-type / per-rarity colour overrides arrive with #6.</p>
           </section>
 
           <section class="tab-panel" data-panel="keywords" hidden>
-            <p class="panel-note">Keyword chips from the 22-keyword pool.</p>
+            <div class="field-grid">
+              <div class="field"><label for="f-keywords">Keywords</label><input id="f-keywords" readonly placeholder="—"></div>
+            </div>
           </section>
 
           <section class="tab-panel" data-panel="export" hidden>
-            <p class="panel-note">JSON / HTML print sheet / PNG / PDF export.</p>
+            <p class="panel-note">JSON / HTML print sheet / PNG / PDF export arrives with #7.</p>
           </section>
         </div>
       </aside>
@@ -116,11 +138,13 @@
     <footer class="editor-status">
       <span><span class="status-dot"></span>Scaffold online</span>
       <span id="status-cards">0 cards loaded</span>
-      <span id="status-type">Type: —</span>
-      <span id="status-rarity">Rarity: —</span>
+      <span id="status-selection">Selected: —</span>
+      <span id="status-validation">Validating…</span>
     </footer>
   </div>
 
+  <script src="js/schema.js"></script>
+  <script src="js/db.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

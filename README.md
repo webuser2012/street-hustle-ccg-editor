@@ -8,7 +8,7 @@ A web-based card editor for **Street Hustle CCG** (collectible card game). Build
 
 ## What this repo is
 
-- **`app/`** — the editor shell: design-system tokens, the card styles ported from the print template, and a runnable empty canvas. Static, no build step.
+- **`app/`** — the editor: design-system tokens, the card styles ported from the print template, the card library with type/rarity/search filtering, and a live card canvas. Static, no build step, reads `data/` directly.
 - **`data/`** — Single source of truth: the full 116-card database (`STREETHUSTLE_MASTER_DB_v9.6.json`) plus per-type DBs (Dealer / Stash / Action / Borough). Card totals are validated in CI.
 - **`docs/BUILD_INSTRUCTIONS.md`** — Complete spec for building the card editor (features, design system, schema).
 - **`docs/webpages/`** — Reference implementation files: the current print template (`cards.html`) and marketing design system (`index.html`).
@@ -25,10 +25,11 @@ A web-based card editor for **Street Hustle CCG** (collectible card game). Build
 
 ## Quick start
 
-The editor is a build-free static app — no `npm install` required.
+The editor is a build-free static app — no `npm install` required. `dev.sh`
+serves the repo root so the editor reads the canonical `data/` files directly.
 
 ```bash
-scripts/dev.sh            # serves ./app at http://127.0.0.1:5173
+scripts/dev.sh            # editor at http://127.0.0.1:5173/app/
 PORT=8080 scripts/dev.sh  # custom port
 
 python3 scripts/validate_db.py --data-dir data   # validate card data + schema
