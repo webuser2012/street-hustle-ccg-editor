@@ -1,5 +1,7 @@
 # Street Hustle CCG — Card Editor
 
+[![CI](https://github.com/webuser2012/street-hustle-ccg-editor/actions/workflows/ci.yml/badge.svg)](https://github.com/webuser2012/street-hustle-ccg-editor/actions/workflows/ci.yml)
+
 A web-based card editor for **Street Hustle CCG** (collectible card game). Build print-ready cards and JSON game data for the engine.
 
 > **Current status:** Repo seeded with canonical game data (116 cards v9.6) and the build instructions. The editor app itself is a work-in-progress — see the [issue tracker](https://github.com/webuser2012/street-hustle-ccg-editor/issues).
