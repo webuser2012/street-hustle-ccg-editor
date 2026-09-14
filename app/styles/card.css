@@ -1,0 +1,288 @@
+/* Street Hustle CCG - card styles.
+ *
+ * Verbatim from the print template (docs/webpages/cards.html) so the editor
+ * canvas is pixel-identical to what gets printed. Print sizes are kept in
+ * inches; the editor scales the same markup with --editor-card-w/h.
+ */
+
+.card {
+  width: var(--card-w);
+  height: var(--card-h);
+  background: var(--bg);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 2px solid var(--common);
+}
+
+.card.uncommon { border-color: var(--uncommon); }
+.card.rare     { border-color: var(--rare); }
+.card.legendary {
+  border-color: var(--legendary);
+  box-shadow: 0 0 12px rgba(255, 204, 0, 0.4);
+}
+
+/* -- TOP BAR --------------------------- */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 7px;
+  background: var(--bg2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.card-type {
+  font-family: var(--font-mono);
+  font-size: 6.5px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.card-type.dealer  { color: var(--dealer-color); }
+.card-type.stash   { color: var(--stash-color); }
+.card-type.action  { color: var(--action-color); }
+.card-type.borough { color: var(--borough-color); }
+
+.card-cost {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--gd);
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.heat-pip {
+  width: 7px;
+  height: 7px;
+  background: var(--or);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.heat-pip.free {
+  background: transparent;
+  border: 1px solid var(--tx2);
+}
+
+/* -- ART ------------------------------- */
+.card-art {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg2);
+}
+
+.card-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-art-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #1a0800 0%, #0a0300 60%, #0d0500 100%);
+  gap: 6px;
+}
+
+.placeholder-icon {
+  font-size: 28px;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 8px rgba(255, 102, 0, 0.5));
+}
+
+.placeholder-text {
+  font-family: var(--font-mono);
+  font-size: 6px;
+  letter-spacing: 1.5px;
+  color: #3a1800;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 8px;
+}
+
+/* Type-specific art gradients */
+.card.dealer .card-art-placeholder  { background: linear-gradient(160deg, #1a0500 0%, #0a0300 100%); }
+.card.stash .card-art-placeholder   { background: linear-gradient(160deg, #001a08 0%, #000a03 100%); }
+.card.action .card-art-placeholder  { background: linear-gradient(160deg, #00091a 0%, #000308 100%); }
+.card.borough .card-art-placeholder { background: linear-gradient(160deg, #0d001a 0%, #040008 100%); }
+
+/* -- NAME BAND ------------------------- */
+.card-name-band {
+  padding: 4px 7px 3px;
+  background: var(--bg2);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.card-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  color: var(--tx3);
+  line-height: 1;
+}
+
+.card-subtitle {
+  font-family: var(--font-mono);
+  font-size: 6px;
+  letter-spacing: 1px;
+  color: var(--tx2);
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+/* -- STATS BAR ------------------------- */
+.card-stats {
+  display: flex;
+  background: #0d0500;
+  border-top: 1px solid var(--bdr);
+  border-bottom: 1px solid var(--bdr);
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+  padding: 3px 2px;
+  border-right: 1px solid var(--bdr);
+}
+
+.stat:last-child { border-right: none; }
+
+.stat-val {
+  font-family: var(--font-display);
+  font-size: 14px;
+  line-height: 1;
+  color: var(--tx3);
+}
+
+.stat-val.hp    { color: var(--gr); }
+.stat-val.atk   { color: var(--or); }
+.stat-val.def   { color: var(--bl); }
+.stat-val.boost { color: var(--gr); }
+
+.stat-lbl {
+  font-family: var(--font-mono);
+  font-size: 5.5px;
+  letter-spacing: 1px;
+  color: var(--tx2);
+  text-transform: uppercase;
+}
+
+/* -- ABILITY --------------------------- */
+.card-body {
+  padding: 4px 7px 4px;
+  flex: 0 0 auto;
+  background: var(--bg);
+}
+
+.ability-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 5.5px;
+  letter-spacing: 1px;
+  padding: 1px 5px;
+  border-radius: 2px;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.ability-tag.dealer  { background: rgba(255, 102, 0, 0.15);  color: var(--or); border: 1px solid rgba(255, 102, 0, 0.3); }
+.ability-tag.stash   { background: rgba(0, 204, 68, 0.15);   color: var(--gr); border: 1px solid rgba(0, 204, 68, 0.3); }
+.ability-tag.action  { background: rgba(34, 153, 255, 0.15); color: var(--bl); border: 1px solid rgba(34, 153, 255, 0.3); }
+.ability-tag.borough { background: rgba(187, 68, 255, 0.15); color: var(--pu); border: 1px solid rgba(187, 68, 255, 0.3); }
+
+.ability-text {
+  font-size: 7.5px;
+  font-weight: 300;
+  color: var(--tx2);
+  line-height: 1.4;
+}
+
+.flavor-text {
+  font-style: italic;
+  font-size: 6.5px;
+  color: #4a2010;
+  margin-top: 3px;
+  line-height: 1.3;
+}
+
+/* -- FOOTER ---------------------------- */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3px 7px;
+  background: var(--bg2);
+  border-top: 1px solid var(--bdr);
+}
+
+.rarity-label {
+  font-family: var(--font-mono);
+  font-size: 5.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.card.common   .rarity-label { color: var(--common); }
+.card.uncommon .rarity-label { color: var(--uncommon); }
+.card.rare     .rarity-label { color: var(--rare); }
+.card.legendary .rarity-label { color: var(--legendary); }
+
+.set-info {
+  font-family: var(--font-mono);
+  font-size: 5px;
+  letter-spacing: 1px;
+  color: #2a1008;
+  text-transform: uppercase;
+}
+
+/* Legendary accents */
+.card.legendary .card-name { color: var(--legendary); }
+.card.legendary .card-stats { background: #0d0800; }
+.card.legendary .stat-val { color: var(--legendary); }
+
+/* -- EDITOR PREVIEW SCALING -------------------------------------------
+ * The markup above is authored at print size (2.25in x 3.5in). The editor
+ * canvas re-scales the same card to screen size instead of duplicating it.
+ */
+.editor-canvas .card {
+  width: var(--editor-card-w);
+  height: var(--editor-card-h);
+  font-size: 4.2px; /* card internals use px; scale text with the card */
+  transform-origin: top left;
+}
+
+.editor-canvas .card .card-type    { font-size: 11px; letter-spacing: 3px; }
+.editor-canvas .card .card-cost    { font-size: 20px; }
+.editor-canvas .card .heat-pip     { width: 11px; height: 11px; }
+.editor-canvas .card .card-name    { font-size: 24px; letter-spacing: 2px; }
+.editor-canvas .card .card-subtitle { font-size: 10px; }
+.editor-canvas .card .placeholder-icon { font-size: 56px; }
+.editor-canvas .card .placeholder-text { font-size: 10px; letter-spacing: 2px; }
+.editor-canvas .card .stat-val     { font-size: 22px; }
+.editor-canvas .card .stat-lbl     { font-size: 9px; }
+.editor-canvas .card .ability-tag  { font-size: 10px; padding: 2px 8px; }
+.editor-canvas .card .ability-text { font-size: 13px; }
+.editor-canvas .card .flavor-text  { font-size: 11px; }
+.editor-canvas .card .rarity-label { font-size: 10px; letter-spacing: 2px; }
+.editor-canvas .card .set-info     { font-size: 9px; }
+.editor-canvas .card .card-top,
+.editor-canvas .card .card-name-band,
+.editor-canvas .card .card-body,
+.editor-canvas .card .card-footer   { padding: 8px 12px; }

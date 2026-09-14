@@ -1,0 +1,59 @@
+/* Street Hustle CCG - design-system tokens (single source for the editor UI).
+ *
+ * These are the SAME tokens the print template uses (docs/webpages/cards.html).
+ * tests/test_scaffold.py parses both files and fails if they ever drift apart -
+ * change the print template first, then re-sync here.
+ */
+:root {
+  /* Core palette */
+  --or: #ff6600; /* primary orange */
+  --am: #ff9900; /* amber */
+  --gd: #ffcc00; /* gold */
+  --gr: #00cc44; /* green */
+  --bl: #2299ff; /* blue */
+  --pu: #bb44ff; /* purple */
+  --re: #ff2200; /* red */
+
+  /* Backgrounds */
+  --bg: #0a0400;  /* card background */
+  --bg2: #150800; /* card band background */
+  --bg3: #160a00; /* editor section background */
+
+  /* Text */
+  --tx: #ffd9a0;  /* primary text */
+  --tx2: #8a5030; /* secondary text */
+  --tx3: #ffeedd; /* bright text */
+
+  /* Borders */
+  --bdr: #3a1800;
+
+  /* Rarity colours */
+  --common: #666;
+  --uncommon: #2299ff;
+  --rare: #ff6600;
+  --legendary: #ffcc00;
+
+  /* Type colours */
+  --dealer-color: #ff6600;
+  --stash-color: #00cc44;
+  --action-color: #2299ff;
+  --borough-color: #bb44ff;
+
+  /* Editor chrome */
+  --chrome-bg: #060301;
+  --panel-bg: #100800;
+  --panel-line: rgba(255, 102, 0, 0.14);
+  --muted: #6b4a34;
+
+  /* Typography */
+  --font-display: "Bebas Neue", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --font-body: "Barlow Condensed", sans-serif;
+
+  /* Card geometry */
+  --card-w: 2.25in;
+  --card-h: 3.5in;
+  --card-aspect: 0.643;
+  --editor-card-w: 300px;
+  --editor-card-h: 467px;
+}
