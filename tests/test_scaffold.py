@@ -170,7 +170,11 @@ def test_every_local_asset_referenced_exists():
 
 
 def test_dev_script_serves_the_app_over_http():
-    """Boot the real dev entrypoint and fetch the real page."""
+    """Boot the real dev entrypoint and fetch the real page.
+
+    dev.sh serves the repo root so the app can read ./data/ directly; the app
+    lives at /app/. Mirror that here exactly.
+    """
     if shutil.which("python3") is None:
         pytest.skip("python3 not available")
 
@@ -178,9 +182,10 @@ def test_dev_script_serves_the_app_over_http():
     assert "python3 -m http.server" in script, (
         "dev.sh must boot a static server so `scripts/dev.sh` works with zero installs"
     )
+    assert '"$REPO_ROOT"' in script, "dev.sh must serve the repo root (app reads ./data/)"
     port = 8137  # forced for the test to avoid clashing with a running dev server
 
-    cmd = [sys.executable, "-m", "http.server", str(port), "--directory", str(APP)]
+    cmd = [sys.executable, "-m", "http.server", str(port), "--directory", str(REPO_ROOT)]
 
     proc = subprocess.Popen(
         cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, cwd=str(REPO_ROOT)
@@ -195,7 +200,7 @@ def test_dev_script_serves_the_app_over_http():
         while time.time() < deadline:
             try:
                 with urllib.request.urlopen(
-                    f"http://127.0.0.1:{port}/index.html", timeout=2
+                    f"http://127.0.0.1:{port}/app/index.html", timeout=2
                 ) as resp:
                     body = resp.read().decode("utf-8", "replace")
                 break

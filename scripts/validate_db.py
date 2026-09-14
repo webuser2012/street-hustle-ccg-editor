@@ -57,6 +57,13 @@ def load_json(path: pathlib.Path):
         return json.load(fh)
 
 
+def _type_name(expected) -> str:
+    """Human-readable type name; handles the (int, NoneType) tuple case."""
+    if isinstance(expected, tuple):
+        return " or ".join(t.__name__ for t in expected)
+    return expected.__name__
+
+
 def _validate_card(card: dict, errors: list, card_index: int) -> None:
     for field in COMMON_FIELDS:
         if field not in card:
@@ -84,7 +91,7 @@ def _validate_card(card: dict, errors: list, card_index: int) -> None:
         elif not isinstance(card.get(field), expected):
             errors.append(
                 f"[{card_index}] {ctype}.{field} wrong type: "
-                f"{card.get(field)!r} (expected {expected.__name__})"
+                f"{card.get(field)!r} (expected {_type_name(expected)})"
             )
 
 
